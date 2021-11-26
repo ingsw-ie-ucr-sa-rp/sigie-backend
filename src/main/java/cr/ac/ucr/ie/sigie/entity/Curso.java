@@ -21,6 +21,12 @@ public class Curso {
     @Column(name = "creditos", unique = false, nullable = false)
     private int creditos;
 
+    @Column(name = "annoEnQueSeImparte", unique = false, nullable = false)
+    private int annoEnQueSeImparte;
+
+    @Column(name = "posicionCiclo", unique = false, nullable = false)
+    private int posicionCiclo;
+
     @Column(name = "ciclo", unique = false, length = 256, nullable = false)
     private String ciclo;
 
