@@ -5,9 +5,11 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="tipoPerfilEntrada")
 public class TipoPerfilEntrada {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_tipo")
     private int idTipo;
     @Column(name = "nombreTipo", unique = false, length = 256, nullable = false)
     private String nombreTipo;

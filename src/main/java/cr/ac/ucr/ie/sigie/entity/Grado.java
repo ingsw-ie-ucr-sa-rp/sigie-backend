@@ -6,9 +6,11 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="grado")
 public class Grado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_grado")
     private int idGrado;
 
     @Column(name = "nombre", unique = false, length = 50, nullable = false)

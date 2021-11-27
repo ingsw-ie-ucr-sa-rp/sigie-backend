@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="curso")
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,23 +43,13 @@ public class Curso {
     @Column(name = "objetivoGeneral", unique = false, length = 512, nullable = false)
     private String objetivoGeneral;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idModalidad")
-    private Modalidad modalidad;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idAreaDisciplinaria")
+    @ManyToOne(targetEntity = AreaDisciplinaria.class, fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_area_disciplinaria", referencedColumnName = "id_area_disciplinaria", nullable = false)
     private AreaDisciplinaria areaDisciplinaria;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPlanEstudio")
-    private PlanEstudio planEstudio;
 
 
     public Curso() {
-        modalidad = new Modalidad();
         areaDisciplinaria = new AreaDisciplinaria();
-        planEstudio = new PlanEstudio();
     }
 
     public int getIdCurso() {
@@ -149,27 +140,11 @@ public class Curso {
         this.objetivoGeneral = objetivoGeneral;
     }
 
-    public Modalidad getModalidad() {
-        return modalidad;
-    }
-
-    public void setModalidad(Modalidad modalidad) {
-        this.modalidad = modalidad;
-    }
-
     public AreaDisciplinaria getAreaDisciplinaria() {
         return areaDisciplinaria;
     }
 
     public void setAreaDisciplinaria(AreaDisciplinaria areaDisciplinaria) {
         this.areaDisciplinaria = areaDisciplinaria;
-    }
-
-    public PlanEstudio getPlanEstudio() {
-        return planEstudio;
-    }
-
-    public void setPlanEstudio(PlanEstudio planEstudio) {
-        this.planEstudio = planEstudio;
     }
 }

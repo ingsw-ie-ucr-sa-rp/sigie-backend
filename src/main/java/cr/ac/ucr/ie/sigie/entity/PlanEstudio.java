@@ -3,9 +3,10 @@ package cr.ac.ucr.ie.sigie.entity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-
+import cr.ac.ucr.ie.sigie.entity.*;
 
 @Entity
+@Table(name="planEstudio")
 public class PlanEstudio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,12 @@ public class PlanEstudio {
     @Column(name = "nombreCarrera", unique = false, length = 256, nullable = false)
     private String nombreCarrera;
 
+    @ManyToOne(targetEntity = Grado.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional=false)
+    @JoinColumn(name = "id_grado", referencedColumnName = "id_grado", nullable = false)
+    private Grado grado;
+
     public PlanEstudio() {
+        grado = new Grado();
     }
 
     public int getIdPlanEstudio() {
@@ -71,5 +77,12 @@ public class PlanEstudio {
     public void setNombreCarrera(String nombreCarrera) {
         this.nombreCarrera = nombreCarrera;
     }
-    
+
+    public Grado getGrado() {
+        return grado;
+    }
+
+    public void setGrado(Grado grado) {
+        this.grado = grado;
+    }
 }
