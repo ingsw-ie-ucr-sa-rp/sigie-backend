@@ -12,14 +12,8 @@ public class UnidadAcademica {
     private int idUnidadAcademica;
     @Column(name = "nombreUnidadAcademica", unique = false, length = 256, nullable = false)
     private String nombreUnidadAcademica;
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Curso> cursosPropios;
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<PlanEstudio> planesEstudio;
 
     public UnidadAcademica() {
-        cursosPropios = new ArrayList<>();
-        planesEstudio = new ArrayList<>();
     }
 
     public int getIdUnidadAcademica() {
@@ -38,19 +32,4 @@ public class UnidadAcademica {
         this.nombreUnidadAcademica = nombreUnidadAcademica;
     }
 
-    public List<Curso> getCursosPropios() {
-        return cursosPropios;
-    }
-
-    public void setCursosPropios(List<Curso> cursosPropios) {
-        this.cursosPropios = cursosPropios;
-    }
-
-    public List<PlanEstudio> getPlanesEstudio() {
-        return planesEstudio;
-    }
-
-    public void setPlanesEstudio(List<PlanEstudio> planesEstudio) {
-        this.planesEstudio = planesEstudio;
-    }
 }

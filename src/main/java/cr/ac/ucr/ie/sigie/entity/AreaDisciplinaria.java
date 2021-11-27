@@ -15,12 +15,8 @@ public class AreaDisciplinaria {
     @Column(name = "nombreDisciplinaria", unique = false, length = 256, nullable = false)
     private String nombreDisciplinaria;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "areaDisciplinaria", orphanRemoval = true)
-    private List<Curso> cursos;
-
     public AreaDisciplinaria() {
-        cursos = new ArrayList<>();
+
     }
 
     public int getIdAreaDisciplinaria() {
@@ -37,13 +33,5 @@ public class AreaDisciplinaria {
 
     public void setNombreDisciplinaria(String nombreDisciplinaria) {
         this.nombreDisciplinaria = nombreDisciplinaria;
-    }
-
-    public List<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
     }
 }
