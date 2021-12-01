@@ -73,5 +73,5 @@ INSERT INTO curso_electivos (curso_id_curso,electivos_id_curso) Values (1,1);
 
 INSERT INTO curso_referencias_bibliograficas (curso_id_curso,referencias_bibliograficas_id_bibliografia) Values (1,1);
 
->>>>>>> bbb5aa79521f86ce6278fc9cf0ef923a5b75c4b9
+
 
