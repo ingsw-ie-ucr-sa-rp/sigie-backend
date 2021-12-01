@@ -70,3 +70,8 @@ SET @bibliografia_id = LAST_INSERT_ID();
 
 INSERT INTO curso_referencias_bibliograficas (curso_id_curso,referencias_bibliograficas_id_bibliografia) Values (1,1);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fee08f3610b761f48fe0d4c4b8b5eb0b8dddaf7c
