@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.repository.SubContenidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,9 @@ public class TipoPerfilEntradaService {
     @Autowired
     private TipoPerfilEntradaRepository repository;
 
+    TipoPerfilEntradaService (TipoPerfilEntradaRepository tipoPerfilEntradaRepository) {
+        this.repository = tipoPerfilEntradaRepository;
+    }
     public List<TipoPerfilEntrada> listAll() {
         return repository.findAll();
     }

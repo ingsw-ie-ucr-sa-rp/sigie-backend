@@ -15,6 +15,11 @@ public class AreaDisciplinariaService {
     @Autowired
     private AreaDisciplinariaRepository repository;
 
+
+    AreaDisciplinariaService (AreaDisciplinariaRepository areaDisciplinariaRepository) {
+        this.repository = areaDisciplinariaRepository;
+    }
+
     public List<AreaDisciplinaria> listAll() {
         return repository.findAll();
     }

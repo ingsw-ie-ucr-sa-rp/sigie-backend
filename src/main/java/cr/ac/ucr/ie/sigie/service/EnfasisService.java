@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,11 @@ public class EnfasisService {
 
     @Autowired
     private EnfasisRepository repository;
+
+    EnfasisService (EnfasisRepository enfasisRepository) {
+        this.repository = enfasisRepository;
+    }
+
 
     public List<Enfasis> listAll() {
         return repository.findAll();

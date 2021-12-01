@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.repository.PlanEstudioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,9 @@ public class ReferenciaBibliograficaService {
 
     @Autowired
     private ReferenciaBibliograficaRepository repository;
-
+    ReferenciaBibliograficaService (ReferenciaBibliograficaRepository referenciaBibliograficaRepository) {
+        this.repository = referenciaBibliograficaRepository;
+    }
     public List<ReferenciaBibliografica> listAll() {
         return repository.findAll();
     }

@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.repository.TipoPerfilSalidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,9 @@ public class UnidadAcademicaService {
 
     @Autowired
     private UnidadAcademicaRepository repository;
-
+    UnidadAcademicaService (UnidadAcademicaRepository unidadAcademicaRepository) {
+        this.repository = unidadAcademicaRepository;
+    }
     public List<UnidadAcademica> listAll() {
         return repository.findAll();
     }

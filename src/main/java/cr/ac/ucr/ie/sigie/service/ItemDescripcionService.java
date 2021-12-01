@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.repository.GradoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,9 @@ public class ItemDescripcionService {
     @Autowired
     private ItemDescripcionRepository repository;
 
+    ItemDescripcionService (ItemDescripcionRepository itemDescripcionRepository) {
+        this.repository = itemDescripcionRepository;
+    }
     public List<ItemDescripcion> listAll() {
         return repository.findAll();
     }

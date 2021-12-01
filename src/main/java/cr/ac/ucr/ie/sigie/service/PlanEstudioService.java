@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.repository.ModalidadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,9 @@ public class PlanEstudioService {
 
     @Autowired
     private PlanEstudioRepository repository;
-
+    PlanEstudioService (PlanEstudioRepository planEstudioRepository) {
+        this.repository = planEstudioRepository;
+    }
     public List<PlanEstudio> listAll() {
         return repository.findAll();
     }

@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.repository.ItemPerfilSalidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,9 @@ public class ModalidadService {
 
     @Autowired
     private ModalidadRepository repository;
-
+    ModalidadService (ModalidadRepository modalidadRepository) {
+        this.repository = modalidadRepository;
+    }
     public List<Modalidad> listAll() {
         return repository.findAll();
     }
