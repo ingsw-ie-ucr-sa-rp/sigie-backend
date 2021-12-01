@@ -1,6 +1,8 @@
 package cr.ac.ucr.ie.sigie.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -43,7 +45,8 @@ public class Curso {
     private String objetivoGeneral;
 
     @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+            orphanRemoval = true, fetch = FetchType.EAGER)
+    //@JsonIgnoreProperties("curso")
     private List<Curso> electivos;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -68,19 +71,22 @@ public class Curso {
             orphanRemoval = true)
     private List<ResultadosAprendizaje> resultadosDeAprendizaje;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idModalidad")
+    @JsonIgnoreProperties("cursos")
     private Modalidad modalidad;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idAreaDisciplinaria")
+    @JsonIgnoreProperties("cursos")
     private AreaDisciplinaria areaDisciplinaria;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Enfasis> enfasis;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPlanEstudio")
+    @JsonIgnoreProperties({"grado","cursos"})
     private PlanEstudio planEstudio;
 
     @ManyToMany(fetch = FetchType.EAGER)

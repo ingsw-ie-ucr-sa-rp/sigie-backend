@@ -28,50 +28,45 @@ INSERT INTO unidad_academica (nombre_unidad_academica) Values ('Unidad académic
 SET @unidad_academica_id = LAST_INSERT_ID();
 
 --Enfasis
-INSERT INTO enfasis (descripcion, id_plan_estudio) Values ('enfatizar en el enfasis', 1);
-SET @enfasis_id =  LAST_INSERT_ID();
+--INSERT INTO enfasis (descripcion, id_plan_estudio) Values ('enfatizar en el enfasis', 1);
+--SET @enfasis_id =  LAST_INSERT_ID();
 
 --Itemes descripcion
-INSERT INTO item_descripcion (detalle_descripcion, orden_descripcion, id_curso) Values ('Item necesario para el proyecto', 1, 1);
-SET @descripcion_id =  LAST_INSERT_ID();
+--INSERT INTO item_descripcion (detalle_descripcion, orden_descripcion, id_curso) Values ('Item necesario para el proyecto', 1, 1);
+--SET @descripcion_id =  LAST_INSERT_ID();
 
 --Contenido
-INSERT INTO contenido (orden_contenido, tema, id_curso) Values (1, 'Listas enlazadas', 1);
-SET @contenido_id =  LAST_INSERT_ID();
+--INSERT INTO contenido (orden_contenido, tema, id_curso) Values (1, 'Listas enlazadas', 1);
+--SET @contenido_id =  LAST_INSERT_ID();
 
 --electivo
-INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'El curso electivo', 'Prueba 2', 'EL1345', 1, 1, 1);
-SET @curso_id = LAST_INSERT_ID();
+--INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'El curso electivo', 'Prueba 2', 'EL1345', 1, 1, 1);
+--SET @curso_id = LAST_INSERT_ID();
 
 --requisito
-INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'REQUISITO IF', 'Prueba 3', 'LM6363', 1, 1, 1);
-SET @curso_id = LAST_INSERT_ID();
+--INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'REQUISITO IF', 'Prueba 3', 'LM6363', 1, 1, 1);
+--SET @curso_id = LAST_INSERT_ID();
 
 --correquisito
 INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'Apoyo de requisito', 'Prueba 4', 'IF0173', 1, 1, 1);
 SET @curso_id = LAST_INSERT_ID();
 
-<<<<<<< HEAD
-=======
 --referencias_bibliograficas
 INSERT INTO referencia_bibliografica(referencia) Values ('MarieYMarie');
 SET @bibliografia_id = LAST_INSERT_ID();
 
 --curso_correquisitos
 
-INSERT INTO curso_correquisitos(curso_id_curso,correquisitos_id_curso) Values (1,1);
+--INSERT INTO curso_correquisitos(curso_id_curso,correquisitos_id_curso) Values (1,1);
 
 --curso_requisitos
-
-INSERT INTO curso_requisitos(curso_id_curso,requisitos_id_curso) Values (1,1);
+--INSERT INTO curso_requisitos(curso_id_curso,requisitos_id_curso) Values (1,1);
 
 --curso_electivos
 
-INSERT INTO curso_electivos (curso_id_curso,electivos_id_curso) Values (1,1);
+--INSERT INTO curso_electivos (curso_id_curso,electivos_id_curso) Values (1,1);
 
 --curso_referencias_bibliograficas
 
 INSERT INTO curso_referencias_bibliograficas (curso_id_curso,referencias_bibliograficas_id_bibliografia) Values (1,1);
-
->>>>>>> bbb5aa79521f86ce6278fc9cf0ef923a5b75c4b9
 
