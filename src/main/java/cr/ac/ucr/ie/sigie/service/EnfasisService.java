@@ -37,4 +37,8 @@ public class EnfasisService {
         repository.deleteById(id);
     }
 
+    public boolean existsById(int id){
+        return repository.existsById(id);
+    }
+
 }

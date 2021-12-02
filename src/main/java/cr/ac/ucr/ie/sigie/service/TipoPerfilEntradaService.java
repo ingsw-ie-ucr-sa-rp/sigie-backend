@@ -1,10 +1,9 @@
 package cr.ac.ucr.ie.sigie.service;
 
-import cr.ac.ucr.ie.sigie.repository.SubContenidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import cr.ac.ucr.ie.sigie.entity.TipoPerfilEntrada;
+import cr.ac.ucr.ie.sigie.entity.TipoPerfilSa;
 import cr.ac.ucr.ie.sigie.repository.TipoPerfilEntradaRepository;
 
 import java.util.List;
@@ -19,19 +18,23 @@ public class TipoPerfilEntradaService {
     TipoPerfilEntradaService (TipoPerfilEntradaRepository tipoPerfilEntradaRepository) {
         this.repository = tipoPerfilEntradaRepository;
     }
-    public List<TipoPerfilEntrada> listAll() {
+    public List<TipoPerfilSa> listAll() {
         return repository.findAll();
     }
 
-    public void save(TipoPerfilEntrada tipoPerfilEntrada) {
+    public void save(TipoPerfilSa tipoPerfilEntrada) {
         repository.save(tipoPerfilEntrada);
     }
 
-    public TipoPerfilEntrada get(int id) {
+    public TipoPerfilSa get(int id) {
         return repository.findById(id).get();
     }
 
     public void delete(int id) {
         repository.deleteById(id);
+    }
+
+    public boolean existsById(int id){
+        return repository.existsById(id);
     }
 }

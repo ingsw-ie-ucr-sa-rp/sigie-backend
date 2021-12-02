@@ -1,7 +1,5 @@
 package cr.ac.ucr.ie.sigie.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 
@@ -16,12 +14,12 @@ public class ItemPerfilEntrada {
     @Column(name = "descripcion", unique = false, length = 512, nullable = false)
     private String descripcion;
 
-    @ManyToOne(targetEntity = TipoPerfilEntrada.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional=false)
+    @ManyToOne(targetEntity = TipoPerfilSa.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional=false)
     @JoinColumn(name = "id_tipo", referencedColumnName = "id_tipo", nullable = false)
-    private TipoPerfilEntrada tipoPerfilEntrada;
+    private TipoPerfilSa tipoPerfilEntrada;
 
     public ItemPerfilEntrada() {
-        tipoPerfilEntrada = new TipoPerfilEntrada();
+        tipoPerfilEntrada = new TipoPerfilSa();
     }
 
     public String getDescripcion() {
@@ -40,11 +38,11 @@ public class ItemPerfilEntrada {
         this.idItem = idItem;
     }
 
-    public TipoPerfilEntrada getTipoPerfilEntrada() {
+    public TipoPerfilSa getTipoPerfilEntrada() {
         return tipoPerfilEntrada;
     }
 
-    public void setTipoPerfilEntrada(TipoPerfilEntrada tipoPerfilEntrada) {
+    public void setTipoPerfilEntrada(TipoPerfilSa tipoPerfilEntrada) {
         this.tipoPerfilEntrada = tipoPerfilEntrada;
     }
 }

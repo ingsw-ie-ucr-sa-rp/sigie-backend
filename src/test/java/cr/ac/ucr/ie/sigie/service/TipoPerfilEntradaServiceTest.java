@@ -1,7 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
-import cr.ac.ucr.ie.sigie.entity.TipoPerfilEntrada;
-import cr.ac.ucr.ie.sigie.entity.TipoPerfilSalida;
+import cr.ac.ucr.ie.sigie.entity.TipoPerfilSa;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +20,31 @@ class TipoPerfilEntradaServiceTest {
 
     @Test
     void listAll() {
-        List<TipoPerfilEntrada> tiposDePerfilEntrada= tipoPerfilEntradaService.listAll();
+        List<TipoPerfilSa> tiposDePerfilEntrada= tipoPerfilEntradaService.listAll();
         assertTrue(tiposDePerfilEntrada.size()>=1);
     }
 
     @Test
     void save() {
+        TipoPerfilSa tipoPerfilEntrada = new TipoPerfilSa();
+        tipoPerfilEntrada.setNombreTipo("Test");
+        tipoPerfilEntradaService.save(tipoPerfilEntrada);
+        assertTrue(tipoPerfilEntradaService.get(tipoPerfilEntrada.getIdTipo()) != null);
     }
 
     @Test
     void get() {
+        assertTrue(tipoPerfilEntradaService.get(1) != null);
     }
 
     @Test
     void delete() {
+        for (TipoPerfilSa tipoPerfilEntrada:tipoPerfilEntradaService.listAll()) {
+            if(tipoPerfilEntrada.getNombreTipo().equalsIgnoreCase("Test")){
+                int idToDelete = tipoPerfilEntrada.getIdTipo();
+                tipoPerfilEntradaService.delete(idToDelete);
+                assertTrue(!tipoPerfilEntradaService.existsById(idToDelete));
+            }
+        }
     }
 }

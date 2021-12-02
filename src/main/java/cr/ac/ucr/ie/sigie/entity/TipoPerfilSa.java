@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="tipoPerfilEntrada")
-public class TipoPerfilEntrada {
+public class TipoPerfilSa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_tipo")
@@ -14,7 +14,7 @@ public class TipoPerfilEntrada {
     @Column(name = "nombreTipo", unique = false, length = 256, nullable = false)
     private String nombreTipo;
 
-    public TipoPerfilEntrada() {
+    public TipoPerfilSa() {
 
     }
 

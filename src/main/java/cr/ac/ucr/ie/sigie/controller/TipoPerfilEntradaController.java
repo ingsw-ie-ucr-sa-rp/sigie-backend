@@ -1,6 +1,6 @@
 package cr.ac.ucr.ie.sigie.controller;
 
-import cr.ac.ucr.ie.sigie.entity.TipoPerfilEntrada;
+import cr.ac.ucr.ie.sigie.entity.TipoPerfilSa;
 import cr.ac.ucr.ie.sigie.service.TipoPerfilEntradaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,7 +18,7 @@ public class TipoPerfilEntradaController {
     private TipoPerfilEntradaService tipoPerfilEntradaService;
 
     @GetMapping("/list")
-    public List<TipoPerfilEntrada> list() {
+    public List<TipoPerfilSa> list() {
         return tipoPerfilEntradaService.listAll();
     }
 }

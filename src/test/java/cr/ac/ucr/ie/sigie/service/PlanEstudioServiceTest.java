@@ -1,7 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
-import cr.ac.ucr.ie.sigie.entity.Modalidad;
-import cr.ac.ucr.ie.sigie.entity.PlanEstudio;
+import cr.ac.ucr.ie.sigie.entity.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,9 @@ class PlanEstudioServiceTest {
     @Autowired
     private PlanEstudioService planEstudioService;
 
+    @Autowired
+    private GradoService gradoService;
+
 
     @Test
     void listAll() {
@@ -28,13 +30,32 @@ class PlanEstudioServiceTest {
 
     @Test
     void save() {
+        PlanEstudio planEstudio = new PlanEstudio();
+        planEstudio.setAnoAprobacion(1);
+        planEstudio.setCantidadCiclos(3);
+        planEstudio.setCodigoCarrera(123122);
+        planEstudio.setNombreCarrera("Test");
+        planEstudio.setDuracionAnos(2);
+
+        Grado grado = gradoService.get(1);
+        planEstudio.setGrado(grado);
+        planEstudioService.save(planEstudio);
+        assertTrue(planEstudioService.get(planEstudio.getIdPlanEstudio()) != null);
     }
 
     @Test
     void get() {
+        assertTrue(planEstudioService.get(1) != null);
     }
 
     @Test
     void delete() {
+        for (PlanEstudio planEstudio:planEstudioService.listAll()) {
+            if(planEstudio.getNombreCarrera().equalsIgnoreCase("Test")){
+                int idToDelete = planEstudio.getIdPlanEstudio();
+                planEstudioService.delete(idToDelete);
+                assertTrue(!planEstudioService.existsById(idToDelete));
+            }
+        }
     }
 }

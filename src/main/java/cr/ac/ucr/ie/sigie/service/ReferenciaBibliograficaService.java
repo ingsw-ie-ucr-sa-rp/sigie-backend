@@ -33,4 +33,8 @@ public class ReferenciaBibliograficaService {
     public void delete(int id) {
         repository.deleteById(id);
     }
+
+    public boolean existsById(int id){
+        return repository.existsById(id);
+    }
 }
