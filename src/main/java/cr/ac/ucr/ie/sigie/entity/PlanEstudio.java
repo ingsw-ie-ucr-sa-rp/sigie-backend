@@ -3,10 +3,11 @@ package cr.ac.ucr.ie.sigie.entity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import cr.ac.ucr.ie.sigie.entity.*;
 
 @Entity
-@Table(name="planEstudio")
 public class PlanEstudio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +22,30 @@ public class PlanEstudio {
     private int duracionAnos;
     @Column(name = "nombreCarrera", unique = false, length = 256, nullable = false)
     private String nombreCarrera;
-
-    @ManyToOne(targetEntity = Grado.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional=false)
-    @JoinColumn(name = "id_grado", referencedColumnName = "id_grado", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "planEstudio", orphanRemoval = true)
+    private List<Curso> cursos;
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "planEstudio", orphanRemoval = true)
+    private List<Enfasis> enfasis;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<UnidadAcademica> unidadesAcademicasPropietarias;
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "planEstudio", orphanRemoval = true)
+    private List<ItemPerfilEntrada> itemesPerfilEntrada;
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "planEstudio", orphanRemoval = true)
+    private List<ItemPerfilSalida> itemesPerfilSalida;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idGrado")
     private Grado grado;
 
     public PlanEstudio() {
+        cursos = new ArrayList<>();
+        enfasis = new ArrayList<>();
+        unidadesAcademicasPropietarias = new ArrayList<>();
+        itemesPerfilEntrada = new ArrayList<>();
+        itemesPerfilSalida = new ArrayList<>();
         grado = new Grado();
     }
 
@@ -76,6 +95,48 @@ public class PlanEstudio {
 
     public void setNombreCarrera(String nombreCarrera) {
         this.nombreCarrera = nombreCarrera;
+    }
+
+
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
+    }
+
+    public List<Enfasis> getEnfasis() {
+        return enfasis;
+    }
+
+    public void setEnfasis(List<Enfasis> enfasis) {
+        this.enfasis = enfasis;
+    }
+
+    @JsonIgnore
+    public List<UnidadAcademica> getUnidadesAcademicasPropietarias() {
+        return unidadesAcademicasPropietarias;
+    }
+
+    public void setUnidadesAcademicasPropietarias(List<UnidadAcademica> unidadesAcademicasPropietarias) {
+        this.unidadesAcademicasPropietarias = unidadesAcademicasPropietarias;
+    }
+
+    public List<ItemPerfilEntrada> getItemesPerfilEntrada() {
+        return itemesPerfilEntrada;
+    }
+
+    public void setItemesPerfilEntrada(List<ItemPerfilEntrada> itemesPerfilEntrada) {
+        this.itemesPerfilEntrada = itemesPerfilEntrada;
+    }
+
+    public List<ItemPerfilSalida> getItemesPerfilSalida() {
+        return itemesPerfilSalida;
+    }
+
+    public void setItemesPerfilSalida(List<ItemPerfilSalida> itemesPerfilSalida) {
+        this.itemesPerfilSalida = itemesPerfilSalida;
     }
 
     public Grado getGrado() {

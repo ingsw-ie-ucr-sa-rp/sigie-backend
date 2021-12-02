@@ -17,12 +17,17 @@ public class Contenido {
     @Column(name = "ordenContenido", unique = false, nullable = false)
     private int ordenContenido;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "contenido", orphanRemoval = true)
+    private List<SubContenido> subContenidos;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCurso")
     private Curso curso;
 
 
     public Contenido() {
+        subContenidos = new ArrayList<>();
         curso = new Curso();
     }
 
@@ -48,6 +53,14 @@ public class Contenido {
 
     public void setOrdenContenido(int ordenContenido) {
         this.ordenContenido = ordenContenido;
+    }
+
+    public List<SubContenido> getSubContenidos() {
+        return subContenidos;
+    }
+
+    public void setSubContenidos(List<SubContenido> subContenidos) {
+        this.subContenidos = subContenidos;
     }
 
     public Curso getCurso() {

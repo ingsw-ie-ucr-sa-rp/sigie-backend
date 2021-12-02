@@ -14,8 +14,12 @@ public class Modalidad {
     @Column(name = "tipoModalidad", unique = false, length = 128, nullable = false)
     private String tipoModalidad;
 
-    public Modalidad() {
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "modalidad", orphanRemoval = true)
+    private List<Curso> cursos;
 
+    public Modalidad() {
+        cursos = new ArrayList<>();
     }
 
     public int getIdModalidad() {
@@ -35,4 +39,11 @@ public class Modalidad {
     }
 
 
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
+    }
 }

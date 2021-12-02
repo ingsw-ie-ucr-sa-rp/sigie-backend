@@ -3,10 +3,7 @@ package cr.ac.ucr.ie.sigie.controller;
 import cr.ac.ucr.ie.sigie.entity.Curso;
 import cr.ac.ucr.ie.sigie.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,10 +12,29 @@ import java.util.List;
 @RequestMapping(path = "/api/curso")
 public class CursoController {
     @Autowired
-    private CursoService cursoService;
+    private CursoService service;
 
-    @GetMapping("/list")
+    @GetMapping("/cursos")
     public List<Curso> list() {
-        return cursoService.listAll();
+        return service.listAll();
     }
+
+    @GetMapping("/cursos/{idCurso}")
+    Curso one(@PathVariable int idCurso) {
+        return service.get(idCurso);
+    }
+
+    @PostMapping("/add")
+    public void add(@RequestBody Curso curso) {
+        try {
+
+            service.save(curso);
+
+        } catch (Exception e) {
+            //TODO
+            System.out.println(e.toString());
+        }
+    }
+
+
 }
