@@ -5,19 +5,17 @@ import javax.persistence.*;
 
 
 @Entity
-public class TipoPerfilEntrada {
-
+@Table(name="tipoPerfilEntrada")
+public class TipoPerfilSa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_tipo")
     private int idTipo;
     @Column(name = "nombreTipo", unique = false, length = 256, nullable = false)
     private String nombreTipo;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTipoPerfilEntrada")
-    private ItemPerfilEntrada itemPerfilEntrada;
 
-    public TipoPerfilEntrada() {
-        itemPerfilEntrada = new ItemPerfilEntrada();
+    public TipoPerfilSa() {
+
     }
 
     public int getIdTipo() {
@@ -34,13 +32,5 @@ public class TipoPerfilEntrada {
 
     public void setNombreTipo(String nombreTipo) {
         this.nombreTipo = nombreTipo;
-    }
-
-    public ItemPerfilEntrada getItemPerfilEntrada() {
-        return itemPerfilEntrada;
-    }
-
-    public void setItemPerfilEntrada(ItemPerfilEntrada itemPerfilEntrada) {
-        this.itemPerfilEntrada = itemPerfilEntrada;
     }
 }

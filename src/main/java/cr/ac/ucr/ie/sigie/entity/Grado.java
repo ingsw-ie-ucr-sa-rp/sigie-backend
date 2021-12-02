@@ -6,9 +6,11 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="grado")
 public class Grado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_grado")
     private int idGrado;
 
     @Column(name = "nombre", unique = false, length = 50, nullable = false)
@@ -19,14 +21,6 @@ public class Grado {
 
     @Column(name = "totalCreditosMinimo", unique = false, nullable = false)
     private int totalCreditosMinimo;
-
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "grado", orphanRemoval = true)
-    private List<PlanEstudio> planesEstudio;
-
-    public Grado() {
-        planesEstudio = new ArrayList<>();
-    }
 
     public int getIdGrado() {
         return idGrado;
@@ -60,11 +54,4 @@ public class Grado {
         this.totalCreditosMinimo = totalCreditosMinimo;
     }
 
-    public List<PlanEstudio> getPlanesEstudio() {
-        return planesEstudio;
-    }
-
-    public void setPlanesEstudio(List<PlanEstudio> planesEstudio) {
-        this.planesEstudio = planesEstudio;
-    }
 }

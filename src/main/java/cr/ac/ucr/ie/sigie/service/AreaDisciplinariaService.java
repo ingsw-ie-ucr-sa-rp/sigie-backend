@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import cr.ac.ucr.ie.sigie.entity.AreaDisciplinaria;
 import cr.ac.ucr.ie.sigie.repository.AreaDisciplinariaRepository;
 
+import java.awt.geom.Area;
 import java.util.List;
 
 @Service
@@ -14,6 +15,11 @@ public class AreaDisciplinariaService {
 
     @Autowired
     private AreaDisciplinariaRepository repository;
+
+
+    AreaDisciplinariaService (AreaDisciplinariaRepository areaDisciplinariaRepository) {
+        this.repository = areaDisciplinariaRepository;
+    }
 
     public List<AreaDisciplinaria> listAll() {
         return repository.findAll();
@@ -28,6 +34,10 @@ public class AreaDisciplinariaService {
     }
 
     public void delete(int id) {
-        repository.deleteById(id);
+         repository.deleteById(id);
+    }
+
+    public boolean existsById(int id){
+        return repository.existsById(id);
     }
 }

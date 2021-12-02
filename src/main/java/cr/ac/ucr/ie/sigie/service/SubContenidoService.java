@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.repository.ResultadosAprendizajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,9 @@ public class SubContenidoService {
 
     @Autowired
     private SubContenidoRepository repository;
-
+    SubContenidoService (SubContenidoRepository subContenidoRepository) {
+        this.repository = subContenidoRepository;
+    }
     public List<SubContenido> listAll() {
         return repository.findAll();
     }
@@ -29,5 +32,9 @@ public class SubContenidoService {
 
     public void delete(int id) {
         repository.deleteById(id);
+    }
+
+    public boolean existsById(int id){
+        return repository.existsById(id);
     }
 }
