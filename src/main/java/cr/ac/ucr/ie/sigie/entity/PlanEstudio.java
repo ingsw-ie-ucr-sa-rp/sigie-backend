@@ -29,20 +29,18 @@ public class PlanEstudio {
     @Column(name="nombre_carrera", length = 50, nullable = false)
     private String nombreCarrera;
 
-    @OneToMany(targetEntity = ItemPerfilEntrada.class,fetch = FetchType.EAGER,
+    @OneToMany(targetEntity = ItemPerfilEntrada.class,fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio",nullable = false)
     private List<ItemPerfilEntrada> itemesPerfilEntrada;
 
-    @OneToMany(targetEntity = ItemPerfilSalida.class,fetch = FetchType.EAGER,
+    @OneToMany(targetEntity = ItemPerfilSalida.class,fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio",nullable = false)
     private List<ItemPerfilSalida> itemesPerfilSalida;
 
-
-    @ManyToMany(targetEntity = UnidadAcademica.class,fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_unidad_academica", referencedColumnName = "id_unidad_academica",nullable = false)
+    @ManyToMany(targetEntity = UnidadAcademica.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "plan_estudio_unidad_academica", joinColumns = @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio"), inverseJoinColumns = @JoinColumn(name = "id_unidad_academica", referencedColumnName = "id_unidad_academica"))
     private List<UnidadAcademica> unidadesAcademicasPropetiaras;
 
     @OneToMany(targetEntity = Enfasis.class,fetch = FetchType.EAGER,

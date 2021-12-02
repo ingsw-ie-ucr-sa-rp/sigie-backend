@@ -16,9 +16,8 @@ public class ResultadosAprendizaje {
     @Column(name="sentencia_restultado", length = 50, nullable = false)
     private String sentenciaRestultado;
 
-    @ManyToOne(targetEntity = Curso.class,fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso",nullable = false)
+    @ManyToOne(targetEntity = Curso.class,fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso",nullable = false, insertable = false, updatable = false)
     private Curso curso;
 
     public ResultadosAprendizaje(int idResultadoAprendizaje, String sentenciaRestultado, Curso curso) {

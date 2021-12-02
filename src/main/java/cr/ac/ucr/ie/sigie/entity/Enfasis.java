@@ -17,9 +17,8 @@ public class Enfasis {
     @Column(name = "descripcion", length = 50, nullable = false)
     private String descripcion;
 
-    @ManyToOne(targetEntity = PlanEstudio.class, fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio", nullable = false)
+    @ManyToOne(targetEntity = PlanEstudio.class, fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio", nullable = false, insertable = false, updatable = false)
     private PlanEstudio planEstudio;
 
     @ManyToMany(targetEntity = Curso.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -15,14 +15,12 @@ public class ItemPerfilEntrada {
     @Column(name="descripcion", length = 50, nullable = true)
     private String descripcion;
 
-    @ManyToOne(targetEntity = TipoItemPerfilEntrada.class,fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "id_tipo", referencedColumnName = "id_tipo",nullable = false)
+    @ManyToOne(targetEntity = TipoItemPerfilEntrada.class,fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_tipo", referencedColumnName = "id_tipo",nullable = false, insertable = false, updatable = false)
     private TipoItemPerfilEntrada tipoItemPerfilEntrada;
 
-    @ManyToOne(targetEntity = PlanEstudio.class,fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio",nullable = false)
+    @ManyToOne(targetEntity = PlanEstudio.class,fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio",nullable = false, insertable = false, updatable = false)
     private PlanEstudio planEstudio;
 
     public ItemPerfilEntrada(int idItemPerfilEntrada, String descripcion, TipoItemPerfilEntrada tipoItemPerfilEntrada, PlanEstudio planEstudio) {

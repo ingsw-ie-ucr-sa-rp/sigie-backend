@@ -50,39 +50,36 @@ public class Curso {
     @Column(name="objetivo_general", nullable = false)
     private String objetivoGeneral;
 
-    @ManyToMany(targetEntity = Curso.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "curso_requisito", joinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"), inverseJoinColumns = @JoinColumn(name = "id_curso_requisito", referencedColumnName = "id_curso_requisito"))
+    @ManyToMany(targetEntity = Curso.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "curso_requisito", joinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"), inverseJoinColumns = @JoinColumn(name = "id_curso_requisito", referencedColumnName = "id_curso"))
     private List<Curso> requisitos;
 
-    @ManyToMany(targetEntity = Curso.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "curso_correquisito", joinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"), inverseJoinColumns = @JoinColumn(name = "id_curso_correquisito", referencedColumnName = "id_curso_correquisito"))
+    @ManyToMany(targetEntity = Curso.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "curso_correquisito", joinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"), inverseJoinColumns = @JoinColumn(name = "id_curso_correquisito", referencedColumnName = "id_curso"))
     private List<Curso> correquisitos;
 
     @ManyToMany(targetEntity = Curso.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "curso_electivo", joinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"), inverseJoinColumns = @JoinColumn(name = "id_curso_electivo", referencedColumnName = "id_curso_electivo"))
+    @JoinTable(name = "curso_electivo", joinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"), inverseJoinColumns = @JoinColumn(name = "id_curso_electivo", referencedColumnName = "id_curso"))
     private List<Curso> electivos;
 
-    @ManyToMany(targetEntity = UnidadAcademica.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = UnidadAcademica.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "curso_unidad_academica", joinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"), inverseJoinColumns = @JoinColumn(name = "id_unidad_academica", referencedColumnName = "id_unidad_academica"))
     private List<UnidadAcademica> unidadesAcademicasPropietarias;
 
-    @ManyToOne(targetEntity = PlanEstudio.class,fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio",nullable = false)
+    @ManyToOne(targetEntity = PlanEstudio.class,fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio",nullable = false, insertable = false, updatable = false)
     private PlanEstudio planEstudio;
 
-    @ManyToMany(targetEntity = Enfasis.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Enfasis.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "curso_enfasis", joinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"), inverseJoinColumns = @JoinColumn(name = "id_enfasis", referencedColumnName = "id_enfasis"))
     private List<Enfasis> enfasis;
 
-    @ManyToOne(targetEntity = AreaDisciplinaria.class,fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "id_area_disciplinaria", referencedColumnName = "id_area_disciplinaria",nullable = false)
+    @ManyToOne(targetEntity = AreaDisciplinaria.class,fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_area_disciplinaria", referencedColumnName = "id_area_disciplinaria",nullable = false, insertable = false, updatable = false)
     private AreaDisciplinaria areaDisciplinaria;
 
-    @ManyToOne(targetEntity = Modalidad.class,fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "id_modalidad", referencedColumnName = "id_modalidad",nullable = false)
+    @ManyToOne(targetEntity = Modalidad.class,fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_modalidad", referencedColumnName = "id_modalidad",nullable = false, insertable = false, updatable = false)
     private Modalidad modalidad;
 
     @OneToMany(targetEntity = ResultadosAprendizaje.class,fetch = FetchType.LAZY,

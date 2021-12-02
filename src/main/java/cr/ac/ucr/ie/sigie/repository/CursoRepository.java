@@ -11,8 +11,7 @@ import java.util.Optional;
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Integer> {
 
-    @Query(value = "SELECT * FROM curso", nativeQuery = true)
-    Optional<Curso> buscar();
-    public List<Curso> getByPlanId(Integer planId);
+    @Query(value = "SELECT * FROM curso e WHERE e.id_plan_estudio = ?1", nativeQuery = true)
+    List<Curso> getByPlanId(int id);
 
 }

@@ -17,14 +17,12 @@ public class UnidadAcademica {
     @Column(name="nombre_unidad_academica", unique = true, length = 70, nullable = false)
     private String nombreUnidadAcademica;
 
-    @ManyToMany(targetEntity = PlanEstudio.class,fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio",nullable = false)
+    @ManyToMany(targetEntity = PlanEstudio.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "plan_estudio_unidad_academica", joinColumns = @JoinColumn(name = "id_unidad_academica", referencedColumnName = "id_unidad_academica"), inverseJoinColumns = @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio"))
     private List<PlanEstudio> planesEstudio;
 
-    @ManyToMany(targetEntity = Curso.class,fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso",nullable = false)
+    @ManyToMany(targetEntity = Curso.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "curso_unidad_academica", joinColumns = @JoinColumn(name = "id_unidad_academica", referencedColumnName = "id_unidad_academica"), inverseJoinColumns = @JoinColumn(name = "id_curso", referencedColumnName = "id_curso"))
     private List<Curso> cursosPropios;
 
     public UnidadAcademica(int idUnidadAcademica, String nombreUnidadAcademica, List<PlanEstudio> planesEstudio, List<Curso> cursosPropios) {
