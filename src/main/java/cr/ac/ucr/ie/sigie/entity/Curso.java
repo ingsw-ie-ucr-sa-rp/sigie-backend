@@ -77,7 +77,7 @@ public class Curso {
     private Modalidad modalidad;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "idAreaDisciplinaria")
     private AreaDisciplinaria areaDisciplinaria;
 
