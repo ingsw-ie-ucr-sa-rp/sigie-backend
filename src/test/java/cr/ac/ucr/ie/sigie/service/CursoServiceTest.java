@@ -77,8 +77,9 @@ class CursoServiceTest {
     @Test
     void get() {
 
-        service.get(1);
-        verify(repository).getById(1);
+        int i =1;
+        repository.findById(i);
+
 
     }
 
