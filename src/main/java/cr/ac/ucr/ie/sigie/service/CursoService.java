@@ -30,4 +30,7 @@ public class CursoService {
     public void delete(int id) {
         repository.deleteById(id);
     }
+
+    public List findByPlanId(int planId) { return repository.getByPlanId(planId); }
+
 }
