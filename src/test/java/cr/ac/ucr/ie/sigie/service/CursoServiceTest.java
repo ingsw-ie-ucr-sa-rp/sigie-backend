@@ -1,26 +1,26 @@
 package cr.ac.ucr.ie.sigie.service;
+
 import cr.ac.ucr.ie.sigie.entity.*;
 import cr.ac.ucr.ie.sigie.repository.CursoRepository;
 import org.junit.jupiter.api.*;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 class CursoServiceTest {
-    @Mock private CursoRepository repository;
+    @Mock
+    private CursoRepository repository;
     private CursoService service;
     private AutoCloseable autoCloseable;
 
     @BeforeEach
     void setUp() {
-         autoCloseable = MockitoAnnotations.openMocks(this);
+        autoCloseable = MockitoAnnotations.openMocks(this);
         service = new CursoService(repository);
     }
 
@@ -32,14 +32,14 @@ class CursoServiceTest {
     @Test
     void canListAll() {
         //when
-    service.listAll();
-    //then
-    verify(repository).findAll();
+        service.listAll();
+        //then
+        verify(repository).findAll();
     }
 
     @Test
     void canSave() {
-        // Given
+        //given
         Curso curso = new Curso();
 
         curso.setIdCurso(1);
@@ -65,9 +65,9 @@ class CursoServiceTest {
         curso.setSigla("IF7233");
         curso.setUnidadesAcademicasPropietarias(new ArrayList<UnidadAcademica>());
         curso.setElectivos(new ArrayList<Curso>());
-        // When
+        //when
         service.save(curso);
-        // Then
+        //then
         ArgumentCaptor<Curso> cursoArgumentCaptor = ArgumentCaptor.forClass(Curso.class);
         verify(repository).save(cursoArgumentCaptor.capture());
         Curso capturedCurso = cursoArgumentCaptor.getValue();
@@ -76,16 +76,17 @@ class CursoServiceTest {
 
     @Test
     void get() {
-
-        int i =1;
+        //given
+        int i = 1;
+        //then
         repository.findById(i);
-
-
     }
 
     @Test
     void canDelete() {
+        //given
         int i = 1;
+        //then
         repository.deleteById(i);
     }
 }

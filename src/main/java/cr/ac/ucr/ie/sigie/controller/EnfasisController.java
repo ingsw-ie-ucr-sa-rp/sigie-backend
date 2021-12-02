@@ -1,9 +1,7 @@
 package cr.ac.ucr.ie.sigie.controller;
 
 import cr.ac.ucr.ie.sigie.entity.Enfasis;
-import cr.ac.ucr.ie.sigie.entity.UnidadAcademica;
 import cr.ac.ucr.ie.sigie.service.EnfasisService;
-import cr.ac.ucr.ie.sigie.service.UnidadAcademicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

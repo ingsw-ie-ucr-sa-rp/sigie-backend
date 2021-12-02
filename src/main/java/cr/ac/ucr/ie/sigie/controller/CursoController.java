@@ -25,7 +25,7 @@ public class CursoController {
         try {
             service.save(curso);
         } catch (Exception e) {
-           //TODO
+            throw new RuntimeException(e);
         }
     }
 }

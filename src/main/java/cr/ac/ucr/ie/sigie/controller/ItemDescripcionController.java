@@ -18,6 +18,7 @@ public class ItemDescripcionController {
     private ItemDescripcionService service;
 
     @GetMapping("/items")
-    public List<ItemDescripcion> list() {return service.listAll();
+    public List<ItemDescripcion> list() {
+        return service.listAll();
     }
 }

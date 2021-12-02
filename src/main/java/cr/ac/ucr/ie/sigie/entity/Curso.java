@@ -46,7 +46,6 @@ public class Curso {
 
     @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true, fetch = FetchType.LAZY)
-    //@JsonIgnoreProperties("curso")
     private List<Curso> electivos;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -88,7 +87,7 @@ public class Curso {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPlanEstudio")
-    @JsonIgnoreProperties({"grado","cursos"})
+    @JsonIgnoreProperties({"grado", "cursos"})
     private PlanEstudio planEstudio;
 
     @ManyToMany(fetch = FetchType.LAZY)
