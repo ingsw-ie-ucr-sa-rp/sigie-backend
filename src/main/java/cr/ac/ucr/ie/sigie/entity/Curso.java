@@ -1,5 +1,9 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Cascade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,10 +77,12 @@ public class Curso {
     private Modalidad modalidad;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "idAreaDisciplinaria")
     private AreaDisciplinaria areaDisciplinaria;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Enfasis> enfasis;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -95,10 +101,10 @@ public class Curso {
         itemesDescripcion = new ArrayList<>();
         referenciasBibliograficas = new ArrayList<>();
         resultadosDeAprendizaje = new ArrayList<>();
-        modalidad = new Modalidad();
-        areaDisciplinaria = new AreaDisciplinaria();
+        modalidad = null;
+        areaDisciplinaria = null;
         enfasis = new ArrayList<>();
-        planEstudio = new PlanEstudio();
+        planEstudio = null;
         unidadesAcademicasPropietarias = new ArrayList<>();
     }
 
@@ -190,9 +196,11 @@ public class Curso {
         this.objetivoGeneral = objetivoGeneral;
     }
 
+    @JsonIgnore
     public List<Curso> getElectivos() {
         return electivos;
     }
+
 
     public void setElectivos(List<Curso> electivos) {
         this.electivos = electivos;
@@ -246,6 +254,7 @@ public class Curso {
         this.resultadosDeAprendizaje = resultadosDeAprendizaje;
     }
 
+    @JsonIgnore
     public Modalidad getModalidad() {
         return modalidad;
     }
@@ -254,6 +263,7 @@ public class Curso {
         this.modalidad = modalidad;
     }
 
+    @JsonIgnore
     public AreaDisciplinaria getAreaDisciplinaria() {
         return areaDisciplinaria;
     }
@@ -261,6 +271,7 @@ public class Curso {
     public void setAreaDisciplinaria(AreaDisciplinaria areaDisciplinaria) {
         this.areaDisciplinaria = areaDisciplinaria;
     }
+
 
     public List<Enfasis> getEnfasis() {
         return enfasis;
@@ -270,6 +281,7 @@ public class Curso {
         this.enfasis = enfasis;
     }
 
+    @JsonIgnore
     public PlanEstudio getPlanEstudio() {
         return planEstudio;
     }
@@ -278,6 +290,7 @@ public class Curso {
         this.planEstudio = planEstudio;
     }
 
+    @JsonIgnore
     public List<UnidadAcademica> getUnidadesAcademicasPropietarias() {
         return unidadesAcademicasPropietarias;
     }

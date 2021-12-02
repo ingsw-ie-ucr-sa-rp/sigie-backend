@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import cr.ac.ucr.ie.sigie.entity.*;
 
 @Entity
 public class PlanEstudio {
@@ -95,6 +97,7 @@ public class PlanEstudio {
         this.nombreCarrera = nombreCarrera;
     }
 
+
     public List<Curso> getCursos() {
         return cursos;
     }
@@ -111,6 +114,7 @@ public class PlanEstudio {
         this.enfasis = enfasis;
     }
 
+    @JsonIgnore
     public List<UnidadAcademica> getUnidadesAcademicasPropietarias() {
         return unidadesAcademicasPropietarias;
     }

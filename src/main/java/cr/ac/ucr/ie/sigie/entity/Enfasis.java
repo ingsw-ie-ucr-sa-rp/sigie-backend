@@ -1,5 +1,9 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -42,6 +46,7 @@ public class Enfasis {
         this.descripcion = descripcion;
     }
 
+
     public List<Curso> getCursos() {
         return cursos;
     }
@@ -50,6 +55,7 @@ public class Enfasis {
         this.cursos = cursos;
     }
 
+    @JsonIgnore
     public PlanEstudio getPlanEstudio() {
         return planEstudio;
     }

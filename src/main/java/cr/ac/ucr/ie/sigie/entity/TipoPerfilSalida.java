@@ -44,3 +44,4 @@ public class TipoPerfilSalida {
         this.itemesPerfilSalida = itemesPerfilSalida;
     }
 }
+

@@ -38,6 +38,7 @@ public class Modalidad {
         this.tipoModalidad = tipoModalidad;
     }
 
+
     public List<Curso> getCursos() {
         return cursos;
     }

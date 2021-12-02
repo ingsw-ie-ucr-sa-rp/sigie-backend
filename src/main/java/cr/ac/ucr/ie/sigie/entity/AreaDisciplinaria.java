@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class AreaDisciplinaria {
+public class AreaDisciplinaria{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAreaDisciplinaria;
