@@ -5,15 +5,33 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="resultados_aprendizaje")
 public class ResultadosAprendizaje {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_resultado_aprendizaje")
     private int idResultadoAprendizaje;
-    @Column(name = "descripcion", unique = false, length = 1024, nullable = false)
-    private String descripcion;
+
+    @Column(name="sentencia_restultado", length = 50, nullable = false)
+    private String sentenciaRestultado;
+
+    @ManyToOne(targetEntity = Curso.class,fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso",nullable = false)
+    private Curso curso;
+
+    public ResultadosAprendizaje(int idResultadoAprendizaje, String sentenciaRestultado, Curso curso) {
+        this.idResultadoAprendizaje = idResultadoAprendizaje;
+        this.sentenciaRestultado = sentenciaRestultado;
+        this.curso = curso;
+
+    }
 
     public ResultadosAprendizaje() {
+        this.idResultadoAprendizaje = 0;
+        this.sentenciaRestultado = "";
+        this.curso = new Curso();
     }
 
     public int getIdResultadoAprendizaje() {
@@ -24,11 +42,19 @@ public class ResultadosAprendizaje {
         this.idResultadoAprendizaje = idResultadoAprendizaje;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getSentenciaRestultado() {
+        return sentenciaRestultado;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setSentenciaRestultado(String sentenciaRestultado) {
+        this.sentenciaRestultado = sentenciaRestultado;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 }

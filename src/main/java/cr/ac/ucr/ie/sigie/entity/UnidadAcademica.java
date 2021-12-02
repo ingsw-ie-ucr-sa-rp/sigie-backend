@@ -6,20 +6,35 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="unidad_academica")
 public class UnidadAcademica {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_unidad_academica")
     private int idUnidadAcademica;
-    @Column(name = "nombreUnidadAcademica", unique = false, length = 256, nullable = false)
+
+    @Column(name="nombre_unidad_academica", unique = true, length = 70, nullable = false)
     private String nombreUnidadAcademica;
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Curso> cursosPropios;
-    @ManyToMany(fetch = FetchType.LAZY)
+
+    @ManyToMany(targetEntity = PlanEstudio.class,fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_plan_estudio", referencedColumnName = "id_plan_estudio",nullable = false)
     private List<PlanEstudio> planesEstudio;
 
+    @ManyToMany(targetEntity = Curso.class,fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_curso", referencedColumnName = "id_curso",nullable = false)
+    private List<Curso> cursosPropios;
+
+    public UnidadAcademica(int idUnidadAcademica, String nombreUnidadAcademica, List<PlanEstudio> planesEstudio, List<Curso> cursosPropios) {
+        this.idUnidadAcademica = idUnidadAcademica;
+        this.nombreUnidadAcademica = nombreUnidadAcademica;
+        this.planesEstudio = planesEstudio;
+        this.cursosPropios = cursosPropios;
+    }
+
     public UnidadAcademica() {
-        cursosPropios = new ArrayList<>();
-        planesEstudio = new ArrayList<>();
     }
 
     public int getIdUnidadAcademica() {
@@ -38,6 +53,14 @@ public class UnidadAcademica {
         this.nombreUnidadAcademica = nombreUnidadAcademica;
     }
 
+    public List<PlanEstudio> getPlanesEstudio() {
+        return planesEstudio;
+    }
+
+    public void setPlanesEstudio(List<PlanEstudio> planesEstudio) {
+        this.planesEstudio = planesEstudio;
+    }
+
     public List<Curso> getCursosPropios() {
         return cursosPropios;
     }
@@ -46,11 +69,24 @@ public class UnidadAcademica {
         this.cursosPropios = cursosPropios;
     }
 
-    public List<PlanEstudio> getPlanesEstudio() {
-        return planesEstudio;
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        return prime  + idUnidadAcademica;
     }
 
-    public void setPlanesEstudio(List<PlanEstudio> planesEstudio) {
-        this.planesEstudio = planesEstudio;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        UnidadAcademica other = (UnidadAcademica) obj;
+        if (idUnidadAcademica != other.idUnidadAcademica)
+            return false;
+        return true;
     }
 }
+
