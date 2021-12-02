@@ -20,8 +20,8 @@ INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica,
 SET @curso_id = LAST_INSERT_ID();
 
 --Resultados de aprendizaje
-INSERT INTO resultados_aprendizaje (descripcion) Values ('Hablar de negocio');
-SET @resultados_aprendizaje_id = LAST_INSERT_ID();
+--INSERT INTO resultados_aprendizaje (descripcion) Values ('Hablar de negocio');
+--SET @resultados_aprendizaje_id = LAST_INSERT_ID();
 
 --Unidad academica
 INSERT INTO unidad_academica (nombre_unidad_academica) Values ('Unidad académica agregada');
@@ -52,8 +52,8 @@ INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica,
 SET @curso_id = LAST_INSERT_ID();
 
 --referencias_bibliograficas
-INSERT INTO referencia_bibliografica(referencia) Values ('MarieYMarie');
-SET @bibliografia_id = LAST_INSERT_ID();
+--INSERT INTO referencia_bibliografica(referencia) Values ('MarieYMarie');
+--SET @bibliografia_id = LAST_INSERT_ID();
 
 --curso_correquisitos
 
@@ -67,7 +67,8 @@ SET @bibliografia_id = LAST_INSERT_ID();
 --INSERT INTO curso_electivos (curso_id_curso,electivos_id_curso) Values (1,1);
 
 --curso_referencias_bibliograficas
+--INSERT INTO curso_referencias_bibliograficas (curso_id_curso,referencias_bibliograficas_id_bibliografia) Values (1,1);
 
-INSERT INTO curso_referencias_bibliograficas (curso_id_curso,referencias_bibliograficas_id_bibliografia) Values (1,1);
+
 
 

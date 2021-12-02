@@ -45,22 +45,24 @@ public class Curso {
     private String objetivoGeneral;
 
     @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true, fetch = FetchType.EAGER)
+            orphanRemoval = true, fetch = FetchType.LAZY)
     //@JsonIgnoreProperties("curso")
     private List<Curso> electivos;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> requisitos;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> correquisitos;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "curso", orphanRemoval = true)
+    @JsonIgnoreProperties("curso")
     private List<Contenido> contenidos;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "curso", orphanRemoval = true)
+    @JsonIgnoreProperties("curso")
     private List<ItemDescripcion> itemesDescripcion;
 
     @OneToMany(cascade = CascadeType.ALL,
@@ -81,7 +83,7 @@ public class Curso {
     @JsonIgnoreProperties("cursos")
     private AreaDisciplinaria areaDisciplinaria;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Enfasis> enfasis;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -89,7 +91,7 @@ public class Curso {
     @JsonIgnoreProperties({"grado","cursos"})
     private PlanEstudio planEstudio;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<UnidadAcademica> unidadesAcademicasPropietarias;
 
 
