@@ -1,7 +1,7 @@
 package cr.ac.ucr.ie.sigie.controller;
 
-import cr.ac.ucr.ie.sigie.entity.Grado;
-import cr.ac.ucr.ie.sigie.service.GradoService;
+import cr.ac.ucr.ie.sigie.entity.Contenido;
+import cr.ac.ucr.ie.sigie.service.ContenidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +12,14 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path = "/api/grado")
-public class GradoController {
+@RequestMapping(path = "/api/contenido")
+public class ContenidoController {
 
     @Autowired
-    private GradoService service;
+    private ContenidoService service;
 
-    @GetMapping("/grados")
-    public List<Grado> list() {
+    @GetMapping("/contenidos")
+    public List<Contenido> list() {
         return service.listAll();
     }
-
 }

@@ -1,6 +1,8 @@
 package cr.ac.ucr.ie.sigie.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -43,21 +45,23 @@ public class Curso {
     private String objetivoGeneral;
 
     @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+            orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Curso> electivos;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> requisitos;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> correquisitos;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "curso", orphanRemoval = true)
+    @JsonIgnoreProperties("curso")
     private List<Contenido> contenidos;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "curso", orphanRemoval = true)
+    @JsonIgnoreProperties("curso")
     private List<ItemDescripcion> itemesDescripcion;
 
     @OneToMany(cascade = CascadeType.ALL,
@@ -68,22 +72,25 @@ public class Curso {
             orphanRemoval = true)
     private List<ResultadosAprendizaje> resultadosDeAprendizaje;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idModalidad")
+    @JsonIgnoreProperties("cursos")
     private Modalidad modalidad;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idAreaDisciplinaria")
+    @JsonIgnoreProperties("cursos")
     private AreaDisciplinaria areaDisciplinaria;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Enfasis> enfasis;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPlanEstudio")
+    @JsonIgnoreProperties({"grado", "cursos"})
     private PlanEstudio planEstudio;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<UnidadAcademica> unidadesAcademicasPropietarias;
 
 

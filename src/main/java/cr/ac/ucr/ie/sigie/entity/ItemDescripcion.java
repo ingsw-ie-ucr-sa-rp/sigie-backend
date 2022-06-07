@@ -1,5 +1,7 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 
@@ -16,8 +18,9 @@ public class ItemDescripcion {
     @Column(name = "detalleDescripcion", unique = false, length = 512, nullable = false)
     private String detalleDescripcion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idCurso")
+    @JsonIgnoreProperties("itemesDescripcion")
     private Curso curso;
 
     public ItemDescripcion() {

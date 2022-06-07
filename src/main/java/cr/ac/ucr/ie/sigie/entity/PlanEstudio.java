@@ -1,5 +1,7 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -22,11 +24,13 @@ public class PlanEstudio {
     private String nombreCarrera;
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
+    @JsonIgnoreProperties("planEstudio")
     private List<Curso> cursos;
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
+    @JsonIgnoreProperties("planEstudio")
     private List<Enfasis> enfasis;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<UnidadAcademica> unidadesAcademicasPropietarias;
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
@@ -34,8 +38,9 @@ public class PlanEstudio {
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
     private List<ItemPerfilSalida> itemesPerfilSalida;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idGrado")
+    @JsonIgnoreProperties("planesEstudio")
     private Grado grado;
 
     public PlanEstudio() {
