@@ -1,8 +1,6 @@
 package cr.ac.ucr.ie.sigie.entity;
 
-
 import javax.persistence.*;
-
 
 @Entity
 public class ResultadosAprendizaje {
@@ -10,8 +8,8 @@ public class ResultadosAprendizaje {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idResultadoAprendizaje;
-    @Column(name = "descripcion", unique = false, length = 1024, nullable = false)
-    private String descripcion;
+    @Column(name = "sentenciaResultado", unique = false, length = 1024, nullable = false)
+    private String sentenciaResultado;
 
     public ResultadosAprendizaje() {
     }
@@ -24,11 +22,11 @@ public class ResultadosAprendizaje {
         this.idResultadoAprendizaje = idResultadoAprendizaje;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getSentenciaResultado() {
+        return sentenciaResultado;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setSentenciaResultado(String sentenciaResultado) {
+        this.sentenciaResultado = sentenciaResultado;
     }
 }

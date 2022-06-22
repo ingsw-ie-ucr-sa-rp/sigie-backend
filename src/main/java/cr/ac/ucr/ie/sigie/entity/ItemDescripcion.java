@@ -1,9 +1,7 @@
 package cr.ac.ucr.ie.sigie.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
-
 
 @Entity
 public class ItemDescripcion {

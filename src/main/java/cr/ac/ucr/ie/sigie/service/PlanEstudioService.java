@@ -1,11 +1,11 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IPlanEstudio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cr.ac.ucr.ie.sigie.entity.PlanEstudio;
 import cr.ac.ucr.ie.sigie.repository.PlanEstudioRepository;
-
 import java.util.List;
 
 @Service
@@ -17,6 +17,10 @@ public class PlanEstudioService {
 
     public List<PlanEstudio> listAll() {
         return repository.findAll();
+    }
+
+    public List<IPlanEstudio> getPlanesEstudio(){
+        return repository.findAllBy();
     }
 
     public void save(PlanEstudio planEstudio) {

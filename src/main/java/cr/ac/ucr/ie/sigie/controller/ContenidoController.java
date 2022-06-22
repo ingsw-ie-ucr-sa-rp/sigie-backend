@@ -1,8 +1,10 @@
 package cr.ac.ucr.ie.sigie.controller;
 
-import cr.ac.ucr.ie.sigie.entity.Contenido;
+import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IContenido;
 import cr.ac.ucr.ie.sigie.service.ContenidoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +20,9 @@ public class ContenidoController {
     @Autowired
     private ContenidoService service;
 
-    @GetMapping("/contenidos")
-    public List<Contenido> list() {
-        return service.listAll();
+    @GetMapping("/")
+    public ResponseEntity<List<IContenido>> list() {
+        List<IContenido> contenidos = service.getContenidos();
+        return new ResponseEntity<List<IContenido>>(contenidos, HttpStatus.OK);
     }
 }

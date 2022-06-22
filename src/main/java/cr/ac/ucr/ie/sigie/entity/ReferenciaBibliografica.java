@@ -1,8 +1,6 @@
 package cr.ac.ucr.ie.sigie.entity;
 
-
 import javax.persistence.*;
-
 
 @Entity
 public class ReferenciaBibliografica {

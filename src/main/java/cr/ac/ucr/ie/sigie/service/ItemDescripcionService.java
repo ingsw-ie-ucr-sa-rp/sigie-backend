@@ -1,11 +1,11 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IItemDescripcion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cr.ac.ucr.ie.sigie.entity.ItemDescripcion;
 import cr.ac.ucr.ie.sigie.repository.ItemDescripcionRepository;
-
 import java.util.List;
 
 @Service
@@ -17,6 +17,10 @@ public class ItemDescripcionService {
 
     public List<ItemDescripcion> listAll() {
         return repository.findAll();
+    }
+
+    public List<IItemDescripcion> getItemesDescripcion(){
+        return repository.findAllBy();
     }
 
     public void save(ItemDescripcion itemDescripcion) {

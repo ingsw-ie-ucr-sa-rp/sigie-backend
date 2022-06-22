@@ -1,11 +1,11 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IUnidadAcademica;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cr.ac.ucr.ie.sigie.entity.UnidadAcademica;
 import cr.ac.ucr.ie.sigie.repository.UnidadAcademicaRepository;
-
 import java.util.List;
 
 @Service
@@ -17,6 +17,10 @@ public class UnidadAcademicaService {
 
     public List<UnidadAcademica> listAll() {
         return repository.findAll();
+    }
+
+    public List<IUnidadAcademica> getUnidadesAcademicas(){
+        return repository.findAllBy();
     }
 
     public void save(UnidadAcademica unidadAcademica) {

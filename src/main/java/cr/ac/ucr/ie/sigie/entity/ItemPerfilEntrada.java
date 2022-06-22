@@ -1,9 +1,6 @@
 package cr.ac.ucr.ie.sigie.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
-
 
 @Entity
 public class ItemPerfilEntrada {
@@ -18,13 +15,13 @@ public class ItemPerfilEntrada {
     @JoinColumn(name = "idPlanEstudio")
     private PlanEstudio planEstudio;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "itemPerfilEntrada", orphanRemoval = true)
-    private List<TipoPerfilEntrada> tiposPerfilEntrada;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idTipo")
+    private TipoItemPerfilEntrada tipoItemPerfilEntrada;
 
     public ItemPerfilEntrada() {
         planEstudio = new PlanEstudio();
-        tiposPerfilEntrada = new ArrayList<>();
+        tipoItemPerfilEntrada = new TipoItemPerfilEntrada();
     }
 
     public int getIdTipoPerfilEntrada() {
@@ -51,11 +48,11 @@ public class ItemPerfilEntrada {
         this.planEstudio = planEstudio;
     }
 
-    public List<TipoPerfilEntrada> getTiposPerfilEntrada() {
-        return tiposPerfilEntrada;
+    public TipoItemPerfilEntrada getTipoPerfilEntrada() {
+        return tipoItemPerfilEntrada;
     }
 
-    public void setTiposPerfilEntrada(List<TipoPerfilEntrada> tiposPerfilEntrada) {
-        this.tiposPerfilEntrada = tiposPerfilEntrada;
+    public void setTipoPerfilEntrada(TipoItemPerfilEntrada tipoPerfilEntrada) {
+        this.tipoItemPerfilEntrada = tipoPerfilEntrada;
     }
 }

@@ -14,13 +14,13 @@ INSERT INTO modalidad (tipo_modalidad) Values ('Hibrido');
 SET @modalidad_id = LAST_INSERT_ID();
 
 --Area Disciplinaria
-INSERT INTO area_disciplinaria (nombre_disciplinaria) Values ('Disciplina 3');
+INSERT INTO area_disciplinaria (nombre) Values ('Disciplina 3');
 SET @area_disciplinaria_id = LAST_INSERT_ID();
 
-INSERT INTO area_disciplinaria (nombre_disciplinaria) Values ('Disciplina 4');
+INSERT INTO area_disciplinaria (nombre) Values ('Disciplina 4');
 SET @area_disciplinaria_id = LAST_INSERT_ID();
 
-INSERT INTO area_disciplinaria (nombre_disciplinaria) Values ('Disciplina 5');
+INSERT INTO area_disciplinaria (nombre) Values ('Disciplina 5');
 SET @area_disciplinaria_id = LAST_INSERT_ID();
 
 --Plan de Estudio
