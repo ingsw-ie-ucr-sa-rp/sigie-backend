@@ -1,8 +1,11 @@
-package cr.ac.ucr.ie.sigie.service;
+package cr.ac.ucr.ie.sigie.controller;
 
 import cr.ac.ucr.ie.sigie.entity.*;
 import cr.ac.ucr.ie.sigie.repository.CursoRepository;
-import org.junit.jupiter.api.*;
+import cr.ac.ucr.ie.sigie.service.CursoService;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -12,16 +15,19 @@ import java.util.ArrayList;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.verify;
 
-class CursoServiceTest {
+class CursoControllerTest {
     @Mock
     private CursoRepository repository;
     private CursoService service;
+    private CursoController controller;
     private AutoCloseable autoCloseable;
 
     @BeforeEach
     void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(this);
         service = new CursoService(repository);
+        controller = new CursoController();
+        controller.setService(service);
     }
 
     @AfterEach
@@ -94,7 +100,8 @@ class CursoServiceTest {
         curso.setElectivos(new ArrayList<Curso>());
 
         //when
-        service.save(curso);
+        controller.list();
+        controller.add(curso);
 
         //then
         ArgumentCaptor<Curso> cursoArgumentCaptor = ArgumentCaptor.forClass(Curso.class);

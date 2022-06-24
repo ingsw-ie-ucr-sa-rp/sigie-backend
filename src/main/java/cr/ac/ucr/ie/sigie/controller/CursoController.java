@@ -15,6 +15,10 @@ import java.util.List;
 @RequestMapping(path = "/api/curso")
 public class CursoController {
 
+    public void setService(CursoService service) {
+        this.service = service;
+    }
+
     @Autowired
     private CursoService service;
 
