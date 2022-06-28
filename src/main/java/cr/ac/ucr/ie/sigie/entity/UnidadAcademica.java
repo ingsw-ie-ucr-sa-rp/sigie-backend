@@ -1,5 +1,7 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -37,13 +39,16 @@ public class UnidadAcademica {
         this.nombreUnidadAcademica = nombreUnidadAcademica;
     }
 
+    @JsonIgnore
     public List<Curso> getCursosPropios() {
         return cursosPropios;
     }
 
+
     public void setCursosPropios(List<Curso> cursosPropios) {
         this.cursosPropios = cursosPropios;
     }
+
 
     public List<PlanEstudio> getPlanesEstudio() {
         return planesEstudio;
@@ -53,3 +58,4 @@ public class UnidadAcademica {
         this.planesEstudio = planesEstudio;
     }
 }
+

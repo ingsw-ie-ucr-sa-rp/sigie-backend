@@ -12,8 +12,8 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path = "/api/curso")
-public class CursoController {
+@RequestMapping(path = "/api/cursoElectivo")
+public class CursoElectivoController {
 
     public void setService(CursoService service) {
         this.service = service;

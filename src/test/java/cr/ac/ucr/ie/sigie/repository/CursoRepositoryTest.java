@@ -88,7 +88,7 @@ class CursoServiceTest {
         curso.setReferenciasBibliograficas(new ArrayList<ReferenciaBibliografica>());
         curso.setSigla("IF7233");
         curso.setUnidadesAcademicasPropietarias(new ArrayList<UnidadAcademica>());
-        curso.setElectivos(new ArrayList<Curso>());
+
 
         //when
         repository.save(curso);

@@ -1,12 +1,13 @@
 package cr.ac.ucr.ie.sigie.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.*;
 
 @Entity
-public class Curso {
+public class CursoElectivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCurso;
@@ -42,32 +43,32 @@ public class Curso {
     private String objetivoGeneral;
 
 //    @OneToMany(cascade = CascadeType.ALL,
-//            orphanRemoval = true, fetch = FetchType.LAZY)
-//    private List<Curso> electivos;
+//    orphanRemoval = true, fetch = FetchType.LAZY)
+//    private List<CursoElectivo> electivos;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Curso> requisitos;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    private List<CursoElectivo> requisitos;
+//
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    private List<CursoElectivo> correquisitos;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Curso> correquisitos;
+//    @OneToMany(cascade = CascadeType.ALL,
+//            mappedBy = "curso", orphanRemoval = true)
+//    @JsonIgnoreProperties("curso")
+//    private List<Contenido> contenidos;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "curso", orphanRemoval = true)
-    @JsonIgnoreProperties("curso")
-    private List<Contenido> contenidos;
+//    @OneToMany(cascade = CascadeType.ALL,
+//            mappedBy = "curso", orphanRemoval = true)
+//    @JsonIgnoreProperties("curso")
+//    private List<ItemDescripcion> itemesDescripcion;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "curso", orphanRemoval = true)
-    @JsonIgnoreProperties("curso")
-    private List<ItemDescripcion> itemesDescripcion;
+//    @OneToMany(cascade = CascadeType.ALL,
+//            orphanRemoval = true)
+//    private List<ReferenciaBibliografica> referenciasBibliograficas;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<ReferenciaBibliografica> referenciasBibliograficas;
-
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<ResultadosAprendizaje> resultadosDeAprendizaje;
+//    @OneToMany(cascade = CascadeType.ALL,
+//            orphanRemoval = true)
+//    private List<ResultadosAprendizaje> resultadosDeAprendizaje;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idModalidad")
@@ -79,31 +80,31 @@ public class Curso {
     @JsonIgnoreProperties("cursos")
     private AreaDisciplinaria areaDisciplinaria;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Enfasis> enfasis;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    private List<Enfasis> enfasis;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPlanEstudio")
     @JsonIgnoreProperties({"grado", "cursos"})
     private PlanEstudio planEstudio;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<UnidadAcademica> unidadesAcademicasPropietarias;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    private List<UnidadAcademica> unidadesAcademicasPropietarias;
 
 
-    public Curso() {
+    public CursoElectivo() {
 //        electivos = new ArrayList<>();
-        requisitos = new ArrayList<>();
-        correquisitos = new ArrayList<>();
-        contenidos = new ArrayList<>();
-        itemesDescripcion = new ArrayList<>();
-        referenciasBibliograficas = new ArrayList<>();
-        resultadosDeAprendizaje = new ArrayList<>();
+//        requisitos = new ArrayList<>();
+//        correquisitos = new ArrayList<>();
+//        contenidos = new ArrayList<>();
+//        itemesDescripcion = new ArrayList<>();
+//        referenciasBibliograficas = new ArrayList<>();
+//        resultadosDeAprendizaje = new ArrayList<>();
         modalidad = new Modalidad();
         areaDisciplinaria = new AreaDisciplinaria();
-        enfasis = new ArrayList<>();
+//        enfasis = new ArrayList<>();
         planEstudio = new PlanEstudio();
-        unidadesAcademicasPropietarias = new ArrayList<>();
+//        unidadesAcademicasPropietarias = new ArrayList<>();
     }
 
     public int getIdCurso() {
@@ -194,61 +195,61 @@ public class Curso {
         this.objetivoGeneral = objetivoGeneral;
     }
 
-//    public List<Curso> getElectivos() {
+//    public List<CursoElectivo> getElectivos() {
 //        return electivos;
 //    }
 //
-//    public void setElectivos(List<Curso> electivos) {
+//    public void setElectivos(List<CursoElectivo> electivos) {
 //        this.electivos = electivos;
 //    }
 
-    public List<Curso> getRequisitos() {
-        return requisitos;
-    }
+//    public List<CursoElectivo> getRequisitos() {
+//        return requisitos;
+//    }
+//
+//    public void setRequisitos(List<CursoElectivo> requisitos) {
+//        this.requisitos = requisitos;
+//    }
+//
+//    public List<CursoElectivo> getCorrequisitos() {
+//        return correquisitos;
+//    }
 
-    public void setRequisitos(List<Curso> requisitos) {
-        this.requisitos = requisitos;
-    }
+//    public void setCorrequisitos(List<CursoElectivo> correquisitos) {
+//        this.correquisitos = correquisitos;
+//    }
 
-    public List<Curso> getCorrequisitos() {
-        return correquisitos;
-    }
+//    public List<Contenido> getContenidos() {
+//        return contenidos;
+//    }
+//
+//    public void setContenidos(List<Contenido> contenidos) {
+//        this.contenidos = contenidos;
+//    }
+//
+//    public List<ItemDescripcion> getItemesDescripcion() {
+//        return itemesDescripcion;
+//    }
 
-    public void setCorrequisitos(List<Curso> correquisitos) {
-        this.correquisitos = correquisitos;
-    }
-
-    public List<Contenido> getContenidos() {
-        return contenidos;
-    }
-
-    public void setContenidos(List<Contenido> contenidos) {
-        this.contenidos = contenidos;
-    }
-
-    public List<ItemDescripcion> getItemesDescripcion() {
-        return itemesDescripcion;
-    }
-
-    public void setItemesDescripcion(List<ItemDescripcion> itemesDescripcion) {
-        this.itemesDescripcion = itemesDescripcion;
-    }
-
-    public List<ReferenciaBibliografica> getReferenciasBibliograficas() {
-        return referenciasBibliograficas;
-    }
-
-    public void setReferenciasBibliograficas(List<ReferenciaBibliografica> referenciasBibliograficas) {
-        this.referenciasBibliograficas = referenciasBibliograficas;
-    }
-
-    public List<ResultadosAprendizaje> getResultadosDeAprendizaje() {
-        return resultadosDeAprendizaje;
-    }
-
-    public void setResultadosDeAprendizaje(List<ResultadosAprendizaje> resultadosDeAprendizaje) {
-        this.resultadosDeAprendizaje = resultadosDeAprendizaje;
-    }
+//    public void setItemesDescripcion(List<ItemDescripcion> itemesDescripcion) {
+//        this.itemesDescripcion = itemesDescripcion;
+//    }
+//
+//    public List<ReferenciaBibliografica> getReferenciasBibliograficas() {
+//        return referenciasBibliograficas;
+//    }
+//
+//    public void setReferenciasBibliograficas(List<ReferenciaBibliografica> referenciasBibliograficas) {
+//        this.referenciasBibliograficas = referenciasBibliograficas;
+//    }
+//
+//    public List<ResultadosAprendizaje> getResultadosDeAprendizaje() {
+//        return resultadosDeAprendizaje;
+//    }
+//
+//    public void setResultadosDeAprendizaje(List<ResultadosAprendizaje> resultadosDeAprendizaje) {
+//        this.resultadosDeAprendizaje = resultadosDeAprendizaje;
+//    }
 
     public Modalidad getModalidad() {
         return modalidad;
@@ -265,14 +266,14 @@ public class Curso {
     public void setAreaDisciplinaria(AreaDisciplinaria areaDisciplinaria) {
         this.areaDisciplinaria = areaDisciplinaria;
     }
-
-    public List<Enfasis> getEnfasis() {
-        return enfasis;
-    }
-
-    public void setEnfasis(List<Enfasis> enfasis) {
-        this.enfasis = enfasis;
-    }
+//
+//    public List<Enfasis> getEnfasis() {
+//        return enfasis;
+//    }
+//
+//    public void setEnfasis(List<Enfasis> enfasis) {
+//        this.enfasis = enfasis;
+//    }
 
     public PlanEstudio getPlanEstudio() {
         return planEstudio;
@@ -282,11 +283,11 @@ public class Curso {
         this.planEstudio = planEstudio;
     }
 
-    public List<UnidadAcademica> getUnidadesAcademicasPropietarias() {
-        return unidadesAcademicasPropietarias;
-    }
-
-    public void setUnidadesAcademicasPropietarias(List<UnidadAcademica> unidadesAcademicasPropietarias) {
-        this.unidadesAcademicasPropietarias = unidadesAcademicasPropietarias;
-    }
+//    public List<UnidadAcademica> getUnidadesAcademicasPropietarias() {
+//        return unidadesAcademicasPropietarias;
+//    }
+//
+//    public void setUnidadesAcademicasPropietarias(List<UnidadAcademica> unidadesAcademicasPropietarias) {
+//        this.unidadesAcademicasPropietarias = unidadesAcademicasPropietarias;
+//    }
 }
