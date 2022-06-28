@@ -20,6 +20,8 @@ public class PlanEstudio {
     private int duracionAnos;
     @Column(name = "nombreCarrera", unique = false, length = 256, nullable = false)
     private String nombreCarrera;
+    @Column(name = "imagenesRelacionadas", unique = false, nullable = false)
+    private byte imagenesRelacionadas;
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
     @JsonIgnoreProperties("planEstudio")
@@ -42,13 +44,14 @@ public class PlanEstudio {
     private Grado grado;
 
     public PlanEstudio() {
-        cursos = new ArrayList<>();
-        enfasis = new ArrayList<>();
-        unidadesAcademicasPropietarias = new ArrayList<>();
-        itemesPerfilEntrada = new ArrayList<>();
-        itemesPerfilSalida = new ArrayList<>();
-        grado = new Grado();
+        setCursos(new ArrayList<>());
+        setEnfasis(new ArrayList<>());
+        setUnidadesAcademicasPropietarias(new ArrayList<>());
+        setItemesPerfilEntrada(new ArrayList<>());
+        setItemesPerfilSalida(new ArrayList<>());
+        setGrado(new Grado());
     }
+
 
     public int getIdPlanEstudio() {
         return idPlanEstudio;
@@ -96,6 +99,14 @@ public class PlanEstudio {
 
     public void setNombreCarrera(String nombreCarrera) {
         this.nombreCarrera = nombreCarrera;
+    }
+
+    public byte getImagenesRelacionadas() {
+        return imagenesRelacionadas;
+    }
+
+    public void setImagenesRelacionadas(byte imagenesRelacionadas) {
+        this.imagenesRelacionadas = imagenesRelacionadas;
     }
 
     public List<Curso> getCursos() {

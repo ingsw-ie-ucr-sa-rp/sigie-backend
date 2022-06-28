@@ -5,4 +5,6 @@ public interface ICurso {
     String getNombre();
     String getSigla();
     String getCiclo();
+
+    int getCreditos();
 }
