@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cr.ac.ucr.ie.sigie.entity.ItemPerfilSalida;
 import cr.ac.ucr.ie.sigie.repository.ItemPerfilSalidaRepository;
-
 import java.util.List;
 
 @Service

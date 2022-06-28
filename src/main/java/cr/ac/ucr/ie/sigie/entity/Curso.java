@@ -1,14 +1,9 @@
 package cr.ac.ucr.ie.sigie.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.Cascade;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-
 
 @Entity
 public class Curso {
@@ -46,22 +41,24 @@ public class Curso {
     @Column(name = "objetivoGeneral", unique = false, length = 512, nullable = false)
     private String objetivoGeneral;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<Curso> electivos;
+//    @OneToMany(cascade = CascadeType.ALL,
+//            orphanRemoval = true, fetch = FetchType.LAZY)
+//    private List<Curso> electivos;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> requisitos;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> correquisitos;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "curso", orphanRemoval = true)
+    @JsonIgnoreProperties("curso")
     private List<Contenido> contenidos;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "curso", orphanRemoval = true)
+    @JsonIgnoreProperties("curso")
     private List<ItemDescripcion> itemesDescripcion;
 
     @OneToMany(cascade = CascadeType.ALL,
@@ -72,39 +69,40 @@ public class Curso {
             orphanRemoval = true)
     private List<ResultadosAprendizaje> resultadosDeAprendizaje;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idModalidad")
+    @JsonIgnoreProperties("cursos")
     private Modalidad modalidad;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idAreaDisciplinaria")
+    @JsonIgnoreProperties("cursos")
     private AreaDisciplinaria areaDisciplinaria;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Enfasis> enfasis;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPlanEstudio")
+    @JsonIgnoreProperties({"grado", "cursos"})
     private PlanEstudio planEstudio;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<UnidadAcademica> unidadesAcademicasPropietarias;
 
 
     public Curso() {
-        electivos = new ArrayList<>();
+//        electivos = new ArrayList<>();
         requisitos = new ArrayList<>();
         correquisitos = new ArrayList<>();
         contenidos = new ArrayList<>();
         itemesDescripcion = new ArrayList<>();
         referenciasBibliograficas = new ArrayList<>();
         resultadosDeAprendizaje = new ArrayList<>();
-        modalidad = null;
-        areaDisciplinaria = null;
+        modalidad = new Modalidad();
+        areaDisciplinaria = new AreaDisciplinaria();
         enfasis = new ArrayList<>();
-        planEstudio = null;
+        planEstudio = new PlanEstudio();
         unidadesAcademicasPropietarias = new ArrayList<>();
     }
 
@@ -196,15 +194,13 @@ public class Curso {
         this.objetivoGeneral = objetivoGeneral;
     }
 
-    @JsonIgnore
-    public List<Curso> getElectivos() {
-        return electivos;
-    }
-
-
-    public void setElectivos(List<Curso> electivos) {
-        this.electivos = electivos;
-    }
+//    public List<Curso> getElectivos() {
+//        return electivos;
+//    }
+//
+//    public void setElectivos(List<Curso> electivos) {
+//        this.electivos = electivos;
+//    }
 
     public List<Curso> getRequisitos() {
         return requisitos;
@@ -254,7 +250,6 @@ public class Curso {
         this.resultadosDeAprendizaje = resultadosDeAprendizaje;
     }
 
-    @JsonIgnore
     public Modalidad getModalidad() {
         return modalidad;
     }
@@ -263,7 +258,6 @@ public class Curso {
         this.modalidad = modalidad;
     }
 
-    @JsonIgnore
     public AreaDisciplinaria getAreaDisciplinaria() {
         return areaDisciplinaria;
     }
@@ -271,7 +265,6 @@ public class Curso {
     public void setAreaDisciplinaria(AreaDisciplinaria areaDisciplinaria) {
         this.areaDisciplinaria = areaDisciplinaria;
     }
-
 
     public List<Enfasis> getEnfasis() {
         return enfasis;
@@ -281,7 +274,6 @@ public class Curso {
         this.enfasis = enfasis;
     }
 
-    @JsonIgnore
     public PlanEstudio getPlanEstudio() {
         return planEstudio;
     }
@@ -290,7 +282,6 @@ public class Curso {
         this.planEstudio = planEstudio;
     }
 
-    @JsonIgnore
     public List<UnidadAcademica> getUnidadesAcademicasPropietarias() {
         return unidadesAcademicasPropietarias;
     }

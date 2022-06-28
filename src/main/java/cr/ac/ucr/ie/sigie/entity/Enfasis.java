@@ -1,13 +1,9 @@
 package cr.ac.ucr.ie.sigie.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-
 
 @Entity
 public class Enfasis {
@@ -18,11 +14,12 @@ public class Enfasis {
     @Column(name = "descripcion", unique = false, length = 512, nullable = false)
     private String descripcion;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> cursos;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPlanEstudio")
+    @JsonIgnoreProperties("enfasis")
     private PlanEstudio planEstudio;
 
     public Enfasis() {
@@ -46,7 +43,6 @@ public class Enfasis {
         this.descripcion = descripcion;
     }
 
-
     public List<Curso> getCursos() {
         return cursos;
     }
@@ -55,7 +51,6 @@ public class Enfasis {
         this.cursos = cursos;
     }
 
-    @JsonIgnore
     public PlanEstudio getPlanEstudio() {
         return planEstudio;
     }

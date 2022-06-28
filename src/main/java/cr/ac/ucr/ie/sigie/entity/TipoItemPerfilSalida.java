@@ -4,19 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
-
 @Entity
-public class TipoPerfilSalida {
+public class TipoItemPerfilSalida {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTipo;
     @Column(name = "nombreTipo", unique = false, length = 256, nullable = false)
     private String nombreTipo;
     @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "tipoPerfilSalida", orphanRemoval = true)
+            mappedBy = "tipoItemPerfilSalida", orphanRemoval = true)
     private List<ItemPerfilSalida> itemesPerfilSalida;
 
-    public TipoPerfilSalida() {
+    public TipoItemPerfilSalida() {
         itemesPerfilSalida = new ArrayList<>();
     }
 

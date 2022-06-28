@@ -1,6 +1,5 @@
 package cr.ac.ucr.ie.sigie.entity;
 
-
 import javax.persistence.*;
 
 @Entity

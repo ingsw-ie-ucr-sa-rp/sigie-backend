@@ -1,11 +1,9 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import cr.ac.ucr.ie.sigie.entity.*;
 
 @Entity
 public class PlanEstudio {
@@ -24,11 +22,13 @@ public class PlanEstudio {
     private String nombreCarrera;
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
+    @JsonIgnoreProperties("planEstudio")
     private List<Curso> cursos;
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
+    @JsonIgnoreProperties("planEstudio")
     private List<Enfasis> enfasis;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<UnidadAcademica> unidadesAcademicasPropietarias;
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
@@ -36,8 +36,9 @@ public class PlanEstudio {
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
     private List<ItemPerfilSalida> itemesPerfilSalida;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idGrado")
+    @JsonIgnoreProperties("planesEstudio")
     private Grado grado;
 
     public PlanEstudio() {
@@ -97,7 +98,6 @@ public class PlanEstudio {
         this.nombreCarrera = nombreCarrera;
     }
 
-
     public List<Curso> getCursos() {
         return cursos;
     }
@@ -114,7 +114,6 @@ public class PlanEstudio {
         this.enfasis = enfasis;
     }
 
-    @JsonIgnore
     public List<UnidadAcademica> getUnidadesAcademicasPropietarias() {
         return unidadesAcademicasPropietarias;
     }

@@ -3,9 +3,8 @@ package cr.ac.ucr.ie.sigie.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import cr.ac.ucr.ie.sigie.entity.TipoPerfilEntrada;
+import cr.ac.ucr.ie.sigie.entity.TipoItemPerfilEntrada;
 import cr.ac.ucr.ie.sigie.repository.TipoPerfilEntradaRepository;
-
 import java.util.List;
 
 @Service
@@ -15,15 +14,15 @@ public class TipoPerfilEntradaService {
     @Autowired
     private TipoPerfilEntradaRepository repository;
 
-    public List<TipoPerfilEntrada> listAll() {
+    public List<TipoItemPerfilEntrada> listAll() {
         return repository.findAll();
     }
 
-    public void save(TipoPerfilEntrada tipoPerfilEntrada) {
+    public void save(TipoItemPerfilEntrada tipoPerfilEntrada) {
         repository.save(tipoPerfilEntrada);
     }
 
-    public TipoPerfilEntrada get(int id) {
+    public TipoItemPerfilEntrada get(int id) {
         return repository.findById(id).get();
     }
 

@@ -1,9 +1,9 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-
 
 @Entity
 public class Contenido {
@@ -21,8 +21,9 @@ public class Contenido {
             mappedBy = "contenido", orphanRemoval = true)
     private List<SubContenido> subContenidos;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idCurso")
+    @JsonIgnoreProperties("contenidos")
     private Curso curso;
 
 

@@ -1,9 +1,9 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-
 
 @Entity
 public class Grado {
@@ -22,6 +22,7 @@ public class Grado {
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "grado", orphanRemoval = true)
+    @JsonIgnoreProperties("grado")
     private List<PlanEstudio> planesEstudio;
 
     public Grado() {

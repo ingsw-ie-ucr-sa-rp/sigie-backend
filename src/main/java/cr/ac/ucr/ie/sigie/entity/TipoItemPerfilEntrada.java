@@ -1,22 +1,23 @@
 package cr.ac.ucr.ie.sigie.entity;
 
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class TipoPerfilEntrada {
+public class TipoItemPerfilEntrada {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTipo;
     @Column(name = "nombreTipo", unique = false, length = 256, nullable = false)
     private String nombreTipo;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTipoPerfilEntrada")
-    private ItemPerfilEntrada itemPerfilEntrada;
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "tipoItemPerfilEntrada", orphanRemoval = true)
+    private List<ItemPerfilEntrada> itemesPerfilEntrada;
 
-    public TipoPerfilEntrada() {
-        itemPerfilEntrada = new ItemPerfilEntrada();
+    public TipoItemPerfilEntrada() {
+        itemesPerfilEntrada = new ArrayList<>();
     }
 
     public int getIdTipo() {
@@ -35,12 +36,11 @@ public class TipoPerfilEntrada {
         this.nombreTipo = nombreTipo;
     }
 
-    public ItemPerfilEntrada getItemPerfilEntrada() {
-        return itemPerfilEntrada;
+    public List<ItemPerfilEntrada> getItemesPerfilEntrada() {
+        return itemesPerfilEntrada;
     }
 
-    public void setItemPerfilEntrada(ItemPerfilEntrada itemPerfilEntrada) {
-        this.itemPerfilEntrada = itemPerfilEntrada;
+    public void setItemesPerfilEntrada(List<ItemPerfilEntrada> itemesPerfilEntrada) {
+        this.itemesPerfilEntrada = itemesPerfilEntrada;
     }
 }
-
