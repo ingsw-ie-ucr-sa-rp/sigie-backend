@@ -2,9 +2,7 @@ package cr.ac.ucr.ie.sigie.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.*;
-
 
 @Entity
 public class AreaDisciplinaria {
@@ -12,8 +10,8 @@ public class AreaDisciplinaria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAreaDisciplinaria;
 
-    @Column(name = "nombreDisciplinaria", unique = false, length = 256, nullable = false)
-    private String nombreDisciplinaria;
+    @Column(name = "nombre", unique = false, length = 256, nullable = false)
+    private String nombre;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "areaDisciplinaria", orphanRemoval = true)
@@ -31,12 +29,12 @@ public class AreaDisciplinaria {
         this.idAreaDisciplinaria = idAreaDisciplinaria;
     }
 
-    public String getNombreDisciplinaria() {
-        return nombreDisciplinaria;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreDisciplinaria(String nombreDisciplinaria) {
-        this.nombreDisciplinaria = nombreDisciplinaria;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public List<Curso> getCursos() {

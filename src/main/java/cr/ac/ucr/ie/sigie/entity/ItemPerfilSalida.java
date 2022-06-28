@@ -1,8 +1,6 @@
 package cr.ac.ucr.ie.sigie.entity;
 
-
 import javax.persistence.*;
-
 
 @Entity
 public class ItemPerfilSalida {
@@ -20,11 +18,11 @@ public class ItemPerfilSalida {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idTipo")
-    private TipoPerfilSalida tipoPerfilSalida;
+    private TipoItemPerfilSalida tipoItemPerfilSalida;
 
     public ItemPerfilSalida() {
         planEstudio = new PlanEstudio();
-        tipoPerfilSalida = new TipoPerfilSalida();
+        tipoItemPerfilSalida = new TipoItemPerfilSalida();
     }
 
     public int getIdTipoPerfilSalida() {
@@ -51,11 +49,11 @@ public class ItemPerfilSalida {
         this.planEstudio = planEstudio;
     }
 
-    public TipoPerfilSalida getTipoPerfilSalida() {
-        return tipoPerfilSalida;
+    public TipoItemPerfilSalida getTipoPerfilSalida() {
+        return tipoItemPerfilSalida;
     }
 
-    public void setTipoPerfilSalida(TipoPerfilSalida tipoPerfilSalida) {
-        this.tipoPerfilSalida = tipoPerfilSalida;
+    public void setTipoPerfilSalida(TipoItemPerfilSalida tipoPerfilSalida) {
+        this.tipoItemPerfilSalida = tipoPerfilSalida;
     }
 }

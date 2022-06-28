@@ -1,7 +1,6 @@
-package cr.ac.ucr.ie.sigie.service;
+package cr.ac.ucr.ie.sigie.repository;
 
 import cr.ac.ucr.ie.sigie.entity.*;
-import cr.ac.ucr.ie.sigie.repository.CursoRepository;
 import org.junit.jupiter.api.*;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
@@ -15,13 +14,11 @@ import static org.mockito.Mockito.verify;
 class CursoServiceTest {
     @Mock
     private CursoRepository repository;
-    private CursoService service;
     private AutoCloseable autoCloseable;
 
     @BeforeEach
     void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(this);
-        service = new CursoService(repository);
     }
 
     @AfterEach
@@ -94,7 +91,7 @@ class CursoServiceTest {
         curso.setElectivos(new ArrayList<Curso>());
 
         //when
-        service.save(curso);
+        repository.save(curso);
 
         //then
         ArgumentCaptor<Curso> cursoArgumentCaptor = ArgumentCaptor.forClass(Curso.class);

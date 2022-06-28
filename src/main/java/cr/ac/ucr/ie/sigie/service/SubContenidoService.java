@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cr.ac.ucr.ie.sigie.entity.SubContenido;
 import cr.ac.ucr.ie.sigie.repository.SubContenidoRepository;
-
 import java.util.List;
 
 @Service
