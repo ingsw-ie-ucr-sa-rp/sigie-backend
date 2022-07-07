@@ -24,10 +24,10 @@ INSERT INTO area_disciplinaria (nombre) Values ('Disciplina 5');
 SET @area_disciplinaria_id = LAST_INSERT_ID();
 
 --Plan de Estudio
-INSERT INTO plan_estudio (ano_aprobacion, cantidad_ciclos, codigo_carrera, duracion_anos, nombre_carrera, id_grado) Values (2022, 3, 6000002, 4, 'Informática', 1);
+INSERT INTO plan_estudio (ano_aprobacion, cantidad_ciclos, codigo_carrera, duracion_anos, nombre_carrera, imagenes_relacionadas ,id_grado) Values (2022, 3, 6000002, 4, 'Informática',0, 1);
 SET @plan_estudio_id = LAST_INSERT_ID();
 
-INSERT INTO plan_estudio (ano_aprobacion, cantidad_ciclos, codigo_carrera, duracion_anos, nombre_carrera, id_grado) Values (2022, 3, 6000003, 4, 'Maestria', 1);
+INSERT INTO plan_estudio (ano_aprobacion, cantidad_ciclos, codigo_carrera, duracion_anos, nombre_carrera,imagenes_relacionadas, id_grado) Values (2022, 3, 6000003, 4, 'Maestria',0, 1);
 SET @plan_estudio_id = LAST_INSERT_ID();
 
 --Curso
@@ -79,3 +79,8 @@ SET @curso_id = LAST_INSERT_ID();
 --Correquisito
 INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'Apoyo de requisito', 'Prueba 4', 'IF0173', 1, 1, 1);
 SET @curso_id = LAST_INSERT_ID();
+
+--Descripcion Plan Estudio
+INSERT INTO descripcion_plan_estudio (ciclos, codigo, duracion, detalle_descripcion_plan_estudio, orden_descripcion_plan_estudio, id_plan_estudio)
+values('3', '6000002', '4 años', 'La carrera de Informática Empresarial forma profesionales con capacidad para el desarrollo de sistemas, la administración de proyectos informáticos tendientes a organizar sistemas, recursos y finanzas en la empresa, optimizando el acceso, la sistematización y la organización de la información.', 1, 1);
+SET @descripcion_plan_estudio_id = LAST_INSERT_ID();

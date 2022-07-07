@@ -43,6 +43,11 @@ public class PlanEstudio {
     @JsonIgnoreProperties("planesEstudio")
     private Grado grado;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "planEstudio", orphanRemoval = true)
+    @JsonIgnoreProperties("planEstudio")
+    private List<DescripcionPlanEstudio> descripcionesPlanEstudio;
+
     public PlanEstudio() {
         setCursos(new ArrayList<>());
         setEnfasis(new ArrayList<>());
@@ -50,8 +55,8 @@ public class PlanEstudio {
         setItemesPerfilEntrada(new ArrayList<>());
         setItemesPerfilSalida(new ArrayList<>());
         setGrado(new Grado());
+        setDescripcionesPlanEstudio(new ArrayList<>());
     }
-
 
     public int getIdPlanEstudio() {
         return idPlanEstudio;
@@ -155,5 +160,13 @@ public class PlanEstudio {
 
     public void setGrado(Grado grado) {
         this.grado = grado;
+    }
+
+    public List<DescripcionPlanEstudio> getDescripcionesPlanEstudio() {
+        return descripcionesPlanEstudio;
+    }
+
+    public void setDescripcionesPlanEstudio(List<DescripcionPlanEstudio> descripcionesPlanEstudio) {
+        this.descripcionesPlanEstudio = descripcionesPlanEstudio;
     }
 }
