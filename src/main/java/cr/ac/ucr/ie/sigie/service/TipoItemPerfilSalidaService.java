@@ -1,22 +1,22 @@
 package cr.ac.ucr.ie.sigie.service;
 
+import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.ITipoItemPerfilSalida;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import cr.ac.ucr.ie.sigie.entity.TipoItemPerfilSalida;
-import cr.ac.ucr.ie.sigie.repository.TipoPerfilSalidaRepository;
-
+import cr.ac.ucr.ie.sigie.repository.TipoItemPerfilSalidaRepository;
 import java.util.List;
 
 @Service
 @Transactional
-public class TipoPerfilSalidaService {
+public class TipoItemPerfilSalidaService {
 
     @Autowired
-    private TipoPerfilSalidaRepository repository;
+    private TipoItemPerfilSalidaRepository repository;
 
-    public List<TipoItemPerfilSalida> listAll() {
-        return repository.findAll();
+    public List<ITipoItemPerfilSalida> listAll() {
+        return repository.findAllBy();
     }
 
     public void save(TipoItemPerfilSalida tipoPerfilSalida) {
