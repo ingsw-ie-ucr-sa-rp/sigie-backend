@@ -1,5 +1,7 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -42,3 +44,4 @@ public class UnidadAcademica {
         this.planesEstudio = planesEstudio;
     }
 }
+

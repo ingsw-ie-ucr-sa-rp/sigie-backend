@@ -28,6 +28,7 @@ public class CursoController {
         return new ResponseEntity<List<ICurso>>(cursos, HttpStatus.OK);
     }
 
+
     @PostMapping("/")
     public ResponseEntity add(@RequestBody Curso curso) {
 
