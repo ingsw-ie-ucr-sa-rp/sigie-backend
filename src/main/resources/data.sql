@@ -69,15 +69,15 @@ INSERT INTO contenido (orden_contenido, tema) Values (3, 'Tema de SO');
 SET @contenido_id =  LAST_INSERT_ID();
 
 --Electivo
-INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'El curso electivo', 'Prueba 2', 'EL1345', 1, 1, 1);
+INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('1', 4, 0, 0, 0, 4, 0, 'El curso electivo', 'Prueba 2', 'EL1345', 1, 1, 1);
 SET @curso_id = LAST_INSERT_ID();
 
 --Requisito
-INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'REQUISITO IF', 'Prueba 3', 'LM6363', 1, 1, 1);
+INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('2', 4, 0, 0, 0, 4, 0, 'REQUISITO IF', 'Prueba 3', 'LM6363', 1, 1, 1);
 SET @curso_id = LAST_INSERT_ID();
 
 --Correquisito
-INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'Apoyo de requisito', 'Prueba 4', 'IF0173', 1, 1, 1);
+INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('3', 4, 0, 0, 0, 4, 0, 'Apoyo de requisito', 'Prueba 4', 'IF0173', 1, 1, 1);
 SET @curso_id = LAST_INSERT_ID();
 
 --Resultados aprendizaje
