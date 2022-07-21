@@ -55,17 +55,17 @@ SET @enfasis_id =  LAST_INSERT_ID();
 INSERT INTO item_descripcion (detalle_descripcion, orden_descripcion) Values ('Curso que damanda tiempo', 1);
 SET @descripcion_id =  LAST_INSERT_ID();
 
-INSERT INTO item_descripcion (detalle_descripcion, orden_descripcion) Values ('Un muy bonito curso', 1);
+INSERT INTO item_descripcion (detalle_descripcion, orden_descripcion) Values ('Un muy bonito curso', 2);
 SET @descripcion_id =  LAST_INSERT_ID();
 
 --Contenido
 INSERT INTO contenido (orden_contenido, tema) Values (1, 'Listas enlazadas');
 SET @contenido_id =  LAST_INSERT_ID();
 
-INSERT INTO contenido (orden_contenido, tema) Values (1, 'Tema de algoritmos');
+INSERT INTO contenido (orden_contenido, tema) Values (2, 'Tema de algoritmos');
 SET @contenido_id =  LAST_INSERT_ID();
 
-INSERT INTO contenido (orden_contenido, tema) Values (1, 'Tema de SO');
+INSERT INTO contenido (orden_contenido, tema) Values (3, 'Tema de SO');
 SET @contenido_id =  LAST_INSERT_ID();
 
 --Electivo

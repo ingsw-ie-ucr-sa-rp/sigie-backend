@@ -29,12 +29,29 @@ public class CursoController {
     }
 
     @PostMapping("/")
-    public void add(@RequestBody Curso curso) {
-        try {
-            service.save(curso);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    public ResponseEntity add(@RequestBody Curso curso) {
+
+        if(cursoExist(curso)==false) {
+            try {
+                service.save(curso);
+                return new ResponseEntity(HttpStatus.OK);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public boolean cursoExist(Curso curso){
+        List<ICurso> cursos = service.getCursos();
+        boolean cursoExist = false;
+        for (int i = 0; i<cursos.size();i++){
+            if(cursos.get(i).getSigla().equals(curso.getSigla())||cursos.get(i).getNombre().equals(curso.getNombre())){
+                return cursoExist = true;
+            }
+        }
+        return cursoExist;
     }
 
 }
