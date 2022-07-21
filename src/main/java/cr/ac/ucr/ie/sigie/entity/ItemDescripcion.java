@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
@@ -16,13 +17,7 @@ public class ItemDescripcion {
     @Column(name = "detalleDescripcion", unique = false, length = 512, nullable = false)
     private String detalleDescripcion;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idCurso")
-    @JsonIgnoreProperties("itemesDescripcion")
-    private Curso curso;
-
     public ItemDescripcion() {
-        curso = new Curso();
     }
 
     public int getIdDescripcion() {
@@ -48,12 +43,5 @@ public class ItemDescripcion {
     public void setDetalleDescripcion(String detalleDescripcion) {
         this.detalleDescripcion = detalleDescripcion;
     }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
 }
+
