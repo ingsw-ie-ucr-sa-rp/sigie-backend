@@ -52,20 +52,20 @@ INSERT INTO enfasis (descripcion, id_plan_estudio) Values ('Enfasis en IA', 1);
 SET @enfasis_id =  LAST_INSERT_ID();
 
 --Itemes Descripción
-INSERT INTO item_descripcion (detalle_descripcion, orden_descripcion, id_curso) Values ('Curso que damanda tiempo', 1, 1);
+INSERT INTO item_descripcion (detalle_descripcion, orden_descripcion) Values ('Curso que damanda tiempo', 1);
 SET @descripcion_id =  LAST_INSERT_ID();
 
-INSERT INTO item_descripcion (detalle_descripcion, orden_descripcion, id_curso) Values ('Un muy bonito curso', 1, 1);
+INSERT INTO item_descripcion (detalle_descripcion, orden_descripcion) Values ('Un muy bonito curso', 1);
 SET @descripcion_id =  LAST_INSERT_ID();
 
 --Contenido
-INSERT INTO contenido (orden_contenido, tema, id_curso) Values (1, 'Listas enlazadas', 1);
+INSERT INTO contenido (orden_contenido, tema) Values (1, 'Listas enlazadas');
 SET @contenido_id =  LAST_INSERT_ID();
 
-INSERT INTO contenido (orden_contenido, tema, id_curso) Values (1, 'Tema de algoritmos', 1);
+INSERT INTO contenido (orden_contenido, tema) Values (1, 'Tema de algoritmos');
 SET @contenido_id =  LAST_INSERT_ID();
 
-INSERT INTO contenido (orden_contenido, tema, id_curso) Values (1, 'Tema de SO', 1);
+INSERT INTO contenido (orden_contenido, tema) Values (1, 'Tema de SO');
 SET @contenido_id =  LAST_INSERT_ID();
 
 --Electivo
@@ -79,3 +79,13 @@ SET @curso_id = LAST_INSERT_ID();
 --Correquisito
 INSERT INTO curso (ciclo, creditos, electivo, horas_laboratorio, horas_practica, horas_teoria, horas_teorico_practica, nombre, objetivo_general, sigla, id_area_disciplinaria, id_modalidad, id_plan_estudio) Values ('I Ciclo', 4, 0, 0, 0, 4, 0, 'Apoyo de requisito', 'Prueba 4', 'IF0173', 1, 1, 1);
 SET @curso_id = LAST_INSERT_ID();
+
+--Resultados aprendizaje
+INSERT INTO resultados_aprendizaje(id_resultado_aprendizaje, sentencia_resultado) VALUES (1,'Aprender');
+INSERT INTO resultados_aprendizaje(id_resultado_aprendizaje, sentencia_resultado) VALUES (2,'Programar');
+
+--Referencias bibliograficas
+INSERT INTO referencia_bibliografica (id_bibliografia, referencia) VALUES ('1', 'L&L');
+INSERT INTO referencia_bibliografica (id_bibliografia, referencia) VALUES ('2', 'D&D');
+
+

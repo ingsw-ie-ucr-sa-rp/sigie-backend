@@ -41,8 +41,7 @@ public class Curso {
     @Column(name = "objetivoGeneral", unique = false, length = 512, nullable = false)
     private String objetivoGeneral;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> electivos;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -51,22 +50,16 @@ public class Curso {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> correquisitos;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "curso", orphanRemoval = true)
-    @JsonIgnoreProperties("curso")
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Contenido> contenidos;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "curso", orphanRemoval = true)
-    @JsonIgnoreProperties("curso")
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<ItemDescripcion> itemesDescripcion;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<ReferenciaBibliografica> referenciasBibliograficas;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<ResultadosAprendizaje> resultadosDeAprendizaje;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -89,7 +82,6 @@ public class Curso {
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<UnidadAcademica> unidadesAcademicasPropietarias;
-
 
     public Curso() {
         electivos = new ArrayList<>();
