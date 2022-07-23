@@ -25,6 +25,14 @@ public class CursoService {
         return repository.findAllBy();
     }
 
+    public List<ICurso> getCursosPadrePorNombre(String nombre){
+        return repository.findAllByNombreContainsAndPadreTrue(nombre);
+    }
+
+    public List<ICurso> getCursosPorNombre(String nombre){
+        return repository.findAllByNombreContains(nombre);
+    }
+
     public void save(Curso curso) {
         repository.save(curso);
     }

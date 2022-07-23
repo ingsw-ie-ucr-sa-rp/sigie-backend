@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.controller;
 
+import cr.ac.ucr.ie.sigie.entity.PlanEstudio;
 import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IPlanEstudio;
 import cr.ac.ucr.ie.sigie.service.PlanEstudioService;
 import org.springframework.beans.factory.annotation.Autowired;

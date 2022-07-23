@@ -21,15 +21,8 @@ public class Contenido {
             mappedBy = "contenido", orphanRemoval = true)
     private List<SubContenido> subContenidos;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idCurso")
-    @JsonIgnoreProperties("contenidos")
-    private Curso curso;
-
-
     public Contenido() {
         subContenidos = new ArrayList<>();
-        curso = new Curso();
     }
 
     public int getIdContenido() {
@@ -64,11 +57,4 @@ public class Contenido {
         this.subContenidos = subContenidos;
     }
 
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
 }

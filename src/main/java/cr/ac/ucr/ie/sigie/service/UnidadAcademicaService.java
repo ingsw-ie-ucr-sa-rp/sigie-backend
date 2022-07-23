@@ -23,6 +23,10 @@ public class UnidadAcademicaService {
         return repository.findAllBy();
     }
 
+    public List<IUnidadAcademica> getUnidadesAcademicasPorNombre(String nombre){
+        return repository.findAllByNombreUnidadAcademicaContains(nombre);
+    }
+
     public void save(UnidadAcademica unidadAcademica) {
         repository.save(unidadAcademica);
     }

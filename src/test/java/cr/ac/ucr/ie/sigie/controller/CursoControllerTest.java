@@ -101,7 +101,7 @@ class CursoControllerTest {
 
         //when
         controller.list();
-        controller.add(curso);
+//        controller.add(curso);
 
         //then
         ArgumentCaptor<Curso> cursoArgumentCaptor = ArgumentCaptor.forClass(Curso.class);

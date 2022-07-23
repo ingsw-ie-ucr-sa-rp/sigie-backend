@@ -1,6 +1,7 @@
 package cr.ac.ucr.ie.sigie.service;
 
 import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IAreaDisciplinaria;
+import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IUnidadAcademica;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class AreaDisciplinariaService {
         return repository.findAllBy();
     }
 
+    public List<IAreaDisciplinaria> getAreasPorNombre(String nombre){
+        return repository.findAllByNombreContains(nombre);
+    }
     public void save(AreaDisciplinaria areaDisciplinaria) {
         repository.save(areaDisciplinaria);
     }

@@ -1,14 +1,25 @@
 package cr.ac.ucr.ie.sigie.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.ArrayList;
+import cr.ac.ucr.ie.sigie.dto.get.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.modelmapper.ModelMapper;
+
+import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.*;
 
+
 @Entity
-public class Curso {
+@Table(name = "curso")
+@NoArgsConstructor
+@AllArgsConstructor
+public class Curso implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCurso")
     private int idCurso;
 
     @Column(name = "sigla", unique = true, length = 10, nullable = false)
@@ -23,8 +34,11 @@ public class Curso {
     @Column(name = "ciclo", unique = false, length = 256, nullable = false)
     private String ciclo;
 
-    @Column(columnDefinition = "boolean default false")
+    @Column(columnDefinition = "boolean default false", nullable = false)
     private boolean electivo;
+
+    @Column(columnDefinition = "boolean default false", nullable = false)
+    private boolean padre;
 
     @Column(name = "horasTeoria", unique = false, nullable = false)
     private int horasTeoria;
@@ -41,45 +55,37 @@ public class Curso {
     @Column(name = "objetivoGeneral", unique = false, length = 512, nullable = false)
     private String objetivoGeneral;
 
-//    @OneToMany(cascade = CascadeType.ALL,
-//            orphanRemoval = true, fetch = FetchType.LAZY)
-//    private List<Curso> electivos;
-
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> requisitos;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> correquisitos;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "curso", orphanRemoval = true)
-    @JsonIgnoreProperties("curso")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idBloqueElectivo", nullable = true)
+    private BloqueElectivos bloquesElectivos;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<Contenido> contenidos;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "curso", orphanRemoval = true)
-    @JsonIgnoreProperties("curso")
+    @ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     private List<ItemDescripcion> itemesDescripcion;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     private List<ReferenciaBibliografica> referenciasBibliograficas;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     private List<ResultadosAprendizaje> resultadosDeAprendizaje;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idModalidad")
-    @JsonIgnoreProperties("cursos")
     private Modalidad modalidad;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idAreaDisciplinaria")
-    @JsonIgnoreProperties("cursos")
     private AreaDisciplinaria areaDisciplinaria;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<Enfasis> enfasis;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -87,27 +93,21 @@ public class Curso {
     @JsonIgnoreProperties({"grado", "cursos"})
     private PlanEstudio planEstudio;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<UnidadAcademica> unidadesAcademicasPropietarias;
 
 
-    public Curso() {
-//        electivos = new ArrayList<>();
-        requisitos = new ArrayList<>();
-        correquisitos = new ArrayList<>();
-        contenidos = new ArrayList<>();
-        itemesDescripcion = new ArrayList<>();
-        referenciasBibliograficas = new ArrayList<>();
-        resultadosDeAprendizaje = new ArrayList<>();
-        modalidad = new Modalidad();
-        areaDisciplinaria = new AreaDisciplinaria();
-        enfasis = new ArrayList<>();
-        planEstudio = new PlanEstudio();
-        unidadesAcademicasPropietarias = new ArrayList<>();
-    }
 
     public int getIdCurso() {
         return idCurso;
+    }
+
+    public boolean isPadre() {
+        return padre;
+    }
+
+    public void setPadre(boolean padre) {
+        this.padre = padre;
     }
 
     public void setIdCurso(int idCurso) {
@@ -194,17 +194,18 @@ public class Curso {
         this.objetivoGeneral = objetivoGeneral;
     }
 
-//    public List<Curso> getElectivos() {
-//        return electivos;
-//    }
-//
-//    public void setElectivos(List<Curso> electivos) {
-//        this.electivos = electivos;
-//    }
+    public List<RequisitosGetDTO> getRequisitos() {
+    ModelMapper modelMapper = new ModelMapper();
 
-    public List<Curso> getRequisitos() {
-        return requisitos;
+        List<RequisitosGetDTO> dtos = requisitos
+                .stream()
+                .map(requisitos -> modelMapper.map(requisitos, RequisitosGetDTO.class))
+                .collect(Collectors.toList());
+
+        return dtos;
     }
+
+
 
     public void setRequisitos(List<Curso> requisitos) {
         this.requisitos = requisitos;
@@ -250,8 +251,10 @@ public class Curso {
         this.resultadosDeAprendizaje = resultadosDeAprendizaje;
     }
 
-    public Modalidad getModalidad() {
-        return modalidad;
+    public ModalidadGetDTO getModalidad() {
+        ModelMapper modelMapper = new ModelMapper();
+        ModalidadGetDTO dto = modelMapper.map(modalidad,ModalidadGetDTO.class);
+        return dto;
     }
 
     public void setModalidad(Modalidad modalidad) {
@@ -266,8 +269,13 @@ public class Curso {
         this.areaDisciplinaria = areaDisciplinaria;
     }
 
-    public List<Enfasis> getEnfasis() {
-        return enfasis;
+    public List<EnfasisGetDTO> getEnfasis() {
+        ModelMapper modelMapper = new ModelMapper();
+        List<EnfasisGetDTO> dtos = enfasis
+                .stream()
+                .map(enfasis -> modelMapper.map(enfasis, EnfasisGetDTO.class))
+                .collect(Collectors.toList());
+        return dtos;
     }
 
     public void setEnfasis(List<Enfasis> enfasis) {
@@ -282,11 +290,32 @@ public class Curso {
         this.planEstudio = planEstudio;
     }
 
-    public List<UnidadAcademica> getUnidadesAcademicasPropietarias() {
-        return unidadesAcademicasPropietarias;
+    public List<UnidadAcademicaGetDTO> getUnidadesAcademicasPropietarias() {
+        ModelMapper modelMapper = new ModelMapper();
+        List<UnidadAcademicaGetDTO> dtos = unidadesAcademicasPropietarias
+                .stream()
+                .map(unidadesAcademicasPropietarias -> modelMapper.map(unidadesAcademicasPropietarias, UnidadAcademicaGetDTO.class))
+                .collect(Collectors.toList());
+        return dtos;
     }
 
     public void setUnidadesAcademicasPropietarias(List<UnidadAcademica> unidadesAcademicasPropietarias) {
         this.unidadesAcademicasPropietarias = unidadesAcademicasPropietarias;
     }
+
+    public BloqueElectivoGetDTO getBloquesElectivos() {
+        try {
+            ModelMapper modelMapper = new ModelMapper();
+            BloqueElectivoGetDTO dto = modelMapper.map(bloquesElectivos, BloqueElectivoGetDTO.class);
+            return dto;
+        }catch (Exception e){
+            return null;
+        }
+    }
+    public void setBloquesElectivos(BloqueElectivos bloquesElectivos) {
+        this.bloquesElectivos = bloquesElectivos;
+    }
+
+
+
 }
