@@ -10,5 +10,7 @@ import java.util.List;
 public interface CursoRepository extends JpaRepository<Curso, Integer> {
     List<ICurso> findAllBy();
     List<ICurso> findAllByNombreContainsAndPadreTrue(String nombre);
+    List<ICurso> findAllByPadreTrue();
+
     List<ICurso> findAllByNombreContains(String nombre);
 }

@@ -24,7 +24,7 @@ public class UnidadAcademicaService {
     }
 
     public List<IUnidadAcademica> getUnidadesAcademicasPorNombre(String nombre){
-        return repository.findAllByNombreUnidadAcademicaContains(nombre);
+        return repository.findDistinctByNombreUnidadAcademicaContaining(nombre);
     }
 
     public void save(UnidadAcademica unidadAcademica) {

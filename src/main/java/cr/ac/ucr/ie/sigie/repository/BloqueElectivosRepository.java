@@ -12,4 +12,6 @@ import java.util.List;
 @Repository
 public interface BloqueElectivosRepository extends JpaRepository<BloqueElectivos, Integer> {
     List<IBloqueElectivos> findAllBy();
+
+    BloqueElectivos findById(int id);
 }

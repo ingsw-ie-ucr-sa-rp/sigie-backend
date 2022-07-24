@@ -34,7 +34,7 @@ public class BloqueElectivosService {
     }
 
     public BloqueElectivos get(int id) {
-        return repository.findById(id).get();
+        return repository.findById(id);
     }
 
     public void delete(int id) {

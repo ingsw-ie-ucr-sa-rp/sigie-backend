@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface UnidadAcademicaRepository extends JpaRepository<UnidadAcademica, Integer> {
     List<IUnidadAcademica> findAllBy();
-    List<IUnidadAcademica> findAllByNombreUnidadAcademicaContains(String nombre);
+    List<IUnidadAcademica> findDistinctByNombreUnidadAcademicaContaining(String nombre);
 }

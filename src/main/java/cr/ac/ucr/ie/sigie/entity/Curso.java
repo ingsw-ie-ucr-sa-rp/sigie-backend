@@ -96,8 +96,6 @@ public class Curso implements Serializable{
     @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<UnidadAcademica> unidadesAcademicasPropietarias;
 
-
-
     public int getIdCurso() {
         return idCurso;
     }

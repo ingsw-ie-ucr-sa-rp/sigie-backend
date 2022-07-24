@@ -45,6 +45,12 @@ public class CursoController {
         return new ResponseEntity<List<ICurso>>(cursos, HttpStatus.OK);
     }
 
+    @GetMapping("/obtenerbloquespadres")
+    public ResponseEntity<List<ICurso>> getPadres() {
+        List<ICurso> cursos = service.getCursosBloquesElectivos();
+        return new ResponseEntity<List<ICurso>>(cursos, HttpStatus.OK);
+    }
+
     @GetMapping("/obtenercursospornombre")
     public ResponseEntity<List<ICurso>> getCursosPorNombre(@RequestParam String nombre) {
         List<ICurso> cursos = service.getCursosPorNombre(nombre);

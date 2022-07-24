@@ -28,7 +28,11 @@ public class BloqueElectivosController {
         return new ResponseEntity<List<IBloqueElectivos>>(bloqueElectivos, HttpStatus.OK);
     }
 
-
+    @GetMapping("/obtenerporid")
+    public ResponseEntity<BloqueElectivos> getBloquesPorId(@RequestParam int id) {
+        BloqueElectivos cursos = service.get(id);
+        return new ResponseEntity<BloqueElectivos>(cursos, HttpStatus.OK);
+    }
 
     @PostMapping("/guardar")
     public ResponseEntity add(@RequestBody BloqueElectivos bloqueElectivos) {

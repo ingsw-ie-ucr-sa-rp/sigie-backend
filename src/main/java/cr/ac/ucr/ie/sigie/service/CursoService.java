@@ -33,6 +33,10 @@ public class CursoService {
         return repository.findAllByNombreContains(nombre);
     }
 
+    public List<ICurso> getCursosBloquesElectivos(){
+        return repository.findAllByPadreTrue();
+    }
+
     public void save(Curso curso) {
         repository.save(curso);
     }
