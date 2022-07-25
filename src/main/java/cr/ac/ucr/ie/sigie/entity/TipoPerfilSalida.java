@@ -17,7 +17,12 @@ public class TipoPerfilSalida {
     private List<ItemPerfilSalida> itemesPerfilSalida;
 
     public TipoPerfilSalida() {
-        itemesPerfilSalida = new ArrayList<>();
+
+    }
+
+    public TipoPerfilSalida(int idTipo, String nombreTipo) {
+        this.idTipo = idTipo;
+        this.nombreTipo = nombreTipo;
     }
 
     public int getIdTipo() {

@@ -17,7 +17,12 @@ public class TipoPerfilEntrada {
     private ItemPerfilEntrada itemPerfilEntrada;
 
     public TipoPerfilEntrada() {
-        itemPerfilEntrada = new ItemPerfilEntrada();
+
+    }
+
+    public TipoPerfilEntrada(int idTipo, String nombreTipo) {
+        this.idTipo = idTipo;
+        this.nombreTipo = nombreTipo;
     }
 
     public int getIdTipo() {

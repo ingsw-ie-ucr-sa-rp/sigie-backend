@@ -20,7 +20,11 @@ public class AreaDisciplinaria {
     private List<Curso> cursos;
 
     public AreaDisciplinaria() {
-        cursos = new ArrayList<>();
+    }
+
+    public AreaDisciplinaria(int idAreaDisciplinaria, String nombreDisciplinaria) {
+        this.idAreaDisciplinaria = idAreaDisciplinaria;
+        this.nombreDisciplinaria = nombreDisciplinaria;
     }
 
     public int getIdAreaDisciplinaria() {
