@@ -17,9 +17,12 @@ public class UnidadAcademica {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<PlanEstudio> planesEstudio;
 
+    public UnidadAcademica(int idUnidadAcademica, String nombreUnidadAcademica) {
+        this.idUnidadAcademica = idUnidadAcademica;
+        this.nombreUnidadAcademica = nombreUnidadAcademica;
+    }
+
     public UnidadAcademica() {
-        cursosPropios = new ArrayList<>();
-        planesEstudio = new ArrayList<>();
     }
 
     public int getIdUnidadAcademica() {
