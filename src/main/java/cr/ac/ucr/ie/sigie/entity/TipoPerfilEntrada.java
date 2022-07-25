@@ -17,7 +17,6 @@ public class TipoPerfilEntrada {
     private ItemPerfilEntrada itemPerfilEntrada;
 
     public TipoPerfilEntrada() {
-
     }
 
     public TipoPerfilEntrada(int idTipo, String nombreTipo) {

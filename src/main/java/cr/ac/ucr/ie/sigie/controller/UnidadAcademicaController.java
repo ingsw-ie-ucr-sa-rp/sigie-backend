@@ -46,7 +46,7 @@ public class UnidadAcademicaController {
         }
     }
 
-    @DeleteMapping("/deleteAreaDisciplinaria/{id}")
+    @DeleteMapping("/deleteUnidadAcademica/{id}")
     public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
