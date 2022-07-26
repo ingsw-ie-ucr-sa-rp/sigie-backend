@@ -12,9 +12,6 @@ public class TipoPerfilSalida {
     private int idTipo;
     @Column(name = "nombreTipo", unique = false, length = 256, nullable = false)
     private String nombreTipo;
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "tipoPerfilSalida", orphanRemoval = true)
-    private List<ItemPerfilSalida> itemesPerfilSalida;
 
     public TipoPerfilSalida() {
     }
@@ -38,13 +35,5 @@ public class TipoPerfilSalida {
 
     public void setNombreTipo(String nombreTipo) {
         this.nombreTipo = nombreTipo;
-    }
-
-    public List<ItemPerfilSalida> getItemesPerfilSalida() {
-        return itemesPerfilSalida;
-    }
-
-    public void setItemesPerfilSalida(List<ItemPerfilSalida> itemesPerfilSalida) {
-        this.itemesPerfilSalida = itemesPerfilSalida;
     }
 }
