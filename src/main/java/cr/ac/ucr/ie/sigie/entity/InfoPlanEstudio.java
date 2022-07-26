@@ -18,6 +18,7 @@ public class InfoPlanEstudio {
     private String periodicidad;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "unidad_academica")
     private UnidadAcademica unidadesAcademicasPropietarias;
 
     @Column(name = "modalidad", unique = false, nullable = false)
@@ -36,12 +37,15 @@ public class InfoPlanEstudio {
     private String descripcion;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "area_disciplinaria")
     private AreaDisciplinaria areaDisciplinaria;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tipo_perfil_entrada")
     private TipoPerfilEntrada tipoPerfilEntrada;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tipo_perfil_salida")
     private TipoPerfilSalida tipoPerfilSalida;
 
     public InfoPlanEstudio(int id, String nombreCarrera, int añoAprobacion, String periodicidad, UnidadAcademica unidadesAcademicasPropietarias, String modalidad, String gradoAcademico, int duracion, int cantidadCiclos, String descripcion, AreaDisciplinaria areaDisciplinaria, TipoPerfilEntrada tipoPerfilEntrada, TipoPerfilSalida tipoPerfilSalida) {
