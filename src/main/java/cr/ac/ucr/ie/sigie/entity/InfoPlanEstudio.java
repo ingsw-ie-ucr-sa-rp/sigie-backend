@@ -17,8 +17,8 @@ public class InfoPlanEstudio {
     @Column(name = "periodicidad", unique = false, nullable = false)
     private String periodicidad;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<UnidadAcademica> unidadesAcademicasPropietarias;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UnidadAcademica unidadesAcademicasPropietarias;
 
     @Column(name = "modalidad", unique = false, nullable = false)
     private String modalidad;
@@ -35,18 +35,16 @@ public class InfoPlanEstudio {
     @Column(name = "descripcion", unique = false, nullable = false)
     private String descripcion;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<AreaDisciplinaria> areaDisciplinaria;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AreaDisciplinaria areaDisciplinaria;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<TipoPerfilEntrada> tipoPerfilEntrada;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TipoPerfilEntrada tipoPerfilEntrada;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<TipoPerfilSalida> tipoPerfilSalida;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TipoPerfilSalida tipoPerfilSalida;
 
-    public InfoPlanEstudio(int id, String nombreCarrera, int añoAprobacion, String periodicidad, List<UnidadAcademica> unidadesAcademicasPropietarias,
-                           String modalidad, String gradoAcademico, int duracion, int cantidadCiclos, String descripcion,
-                           List<AreaDisciplinaria> areaDisciplinaria, List<TipoPerfilEntrada> tipoPerfilEntrada, List<TipoPerfilSalida> tipoPerfilSalida) {
+    public InfoPlanEstudio(int id, String nombreCarrera, int añoAprobacion, String periodicidad, UnidadAcademica unidadesAcademicasPropietarias, String modalidad, String gradoAcademico, int duracion, int cantidadCiclos, String descripcion, AreaDisciplinaria areaDisciplinaria, TipoPerfilEntrada tipoPerfilEntrada, TipoPerfilSalida tipoPerfilSalida) {
         this.id = id;
         this.nombreCarrera = nombreCarrera;
         this.añoAprobacion = añoAprobacion;
