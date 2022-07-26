@@ -11,8 +11,8 @@ public class InfoPlanEstudio {
     @Column(name = "nombreCarrera", unique = false, nullable = false)
     private String nombreCarrera;
 
-    @Column(name = "añoAprobacion", unique = false, nullable = false)
-    private int añoAprobacion;
+    @Column(name = "anoAprobacion", unique = false, nullable = false)
+    private int anoAprobacion;
 
     @Column(name = "periodicidad", unique = false, nullable = false)
     private String periodicidad;
@@ -48,10 +48,10 @@ public class InfoPlanEstudio {
     @JoinColumn(name = "tipo_perfil_salida")
     private TipoPerfilSalida tipoPerfilSalida;
 
-    public InfoPlanEstudio(int id, String nombreCarrera, int añoAprobacion, String periodicidad, UnidadAcademica unidadesAcademicasPropietarias, String modalidad, String gradoAcademico, int duracion, int cantidadCiclos, String descripcion, AreaDisciplinaria areaDisciplinaria, TipoPerfilEntrada tipoPerfilEntrada, TipoPerfilSalida tipoPerfilSalida) {
+    public InfoPlanEstudio(int id, String nombreCarrera, int anoAprobacion, String periodicidad, UnidadAcademica unidadesAcademicasPropietarias, String modalidad, String gradoAcademico, int duracion, int cantidadCiclos, String descripcion, AreaDisciplinaria areaDisciplinaria, TipoPerfilEntrada tipoPerfilEntrada, TipoPerfilSalida tipoPerfilSalida) {
         this.id = id;
         this.nombreCarrera = nombreCarrera;
-        this.añoAprobacion = añoAprobacion;
+        this.anoAprobacion = anoAprobacion;
         this.periodicidad = periodicidad;
         this.unidadesAcademicasPropietarias = unidadesAcademicasPropietarias;
         this.modalidad = modalidad;
@@ -83,12 +83,12 @@ public class InfoPlanEstudio {
         this.nombreCarrera = nombreCarrera;
     }
 
-    public int getAñoAprobacion() {
-        return añoAprobacion;
+    public int getAnoAprobacion() {
+        return anoAprobacion;
     }
 
-    public void setAñoAprobacion(int añoAprobacion) {
-        this.añoAprobacion = añoAprobacion;
+    public void setAnoAprobacion(int anoAprobacion) {
+        this.anoAprobacion = anoAprobacion;
     }
 
     public String getPeriodicidad() {

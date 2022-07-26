@@ -23,6 +23,12 @@ SET @area_disciplinaria_id = LAST_INSERT_ID();
 INSERT INTO area_disciplinaria (nombre_disciplinaria) Values ('Disciplina 5');
 SET @area_disciplinaria_id = LAST_INSERT_ID();
 
+--Info Plan de Estudio
+INSERT INTO info_plan_estudios (nombre_carrera, año_aprobacion, periodicidad, unidad_academica, modalidad,
+grado_academico, duracion, cantidad_ciclos, descripcion, area_disciplinaria, tipo_perfil_entrada, tipo_perfil_salida)
+Values ('Informatica', 2019, 'Semestral', 1, 'Bimodal', 'Bachiller', 5, 6, 'Carrera de Informatica', 1, 1, 1);
+SET @id = LAST_INSERT_ID();
+
 --Plan de Estudio
 INSERT INTO plan_estudio (ano_aprobacion, cantidad_ciclos, codigo_carrera, duracion_anos, nombre_carrera, id_grado) Values (2022, 3, 6000002, 4, 'Informática', 1);
 SET @plan_estudio_id = LAST_INSERT_ID();
