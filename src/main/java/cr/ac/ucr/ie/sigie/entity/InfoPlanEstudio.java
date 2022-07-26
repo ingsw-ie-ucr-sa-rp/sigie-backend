@@ -95,11 +95,11 @@ public class InfoPlanEstudio {
         this.periodicidad = periodicidad;
     }
 
-    public List<UnidadAcademica> getUnidadesAcademicasPropietarias() {
+    public UnidadAcademica getUnidadesAcademicasPropietarias() {
         return unidadesAcademicasPropietarias;
     }
 
-    public void setUnidadesAcademicasPropietarias(List<UnidadAcademica> unidadesAcademicasPropietarias) {
+    public void setUnidadesAcademicasPropietarias(UnidadAcademica unidadesAcademicasPropietarias) {
         this.unidadesAcademicasPropietarias = unidadesAcademicasPropietarias;
     }
 
@@ -143,27 +143,27 @@ public class InfoPlanEstudio {
         this.descripcion = descripcion;
     }
 
-    public List<AreaDisciplinaria> getAreaDisciplinaria() {
+    public AreaDisciplinaria getAreaDisciplinaria() {
         return areaDisciplinaria;
     }
 
-    public void setAreaDisciplinaria(List<AreaDisciplinaria> areaDisciplinaria) {
+    public void setAreaDisciplinaria(AreaDisciplinaria areaDisciplinaria) {
         this.areaDisciplinaria = areaDisciplinaria;
     }
 
-    public List<TipoPerfilEntrada> getTipoPerfilEntrada() {
+    public TipoPerfilEntrada getTipoPerfilEntrada() {
         return tipoPerfilEntrada;
     }
 
-    public void setTipoPerfilEntrada(List<TipoPerfilEntrada> tipoPerfilEntrada) {
+    public void setTipoPerfilEntrada(TipoPerfilEntrada tipoPerfilEntrada) {
         this.tipoPerfilEntrada = tipoPerfilEntrada;
     }
 
-    public List<TipoPerfilSalida> getTipoPerfilSalida() {
+    public TipoPerfilSalida getTipoPerfilSalida() {
         return tipoPerfilSalida;
     }
 
-    public void setTipoPerfilSalida(List<TipoPerfilSalida> tipoPerfilSalida) {
+    public void setTipoPerfilSalida(TipoPerfilSalida tipoPerfilSalida) {
         this.tipoPerfilSalida = tipoPerfilSalida;
     }
 }
