@@ -1,5 +1,7 @@
 package cr.ac.ucr.ie.sigie.controller;
 
+import cr.ac.ucr.ie.sigie.entity.DescripcionPlanEstudio;
+import cr.ac.ucr.ie.sigie.entity.Enfasis;
 import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IDescripcionPlanEstudio;
 import cr.ac.ucr.ie.sigie.service.DescripcionPlanEstudioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,15 @@ import java.util.List;
         public ResponseEntity<List<IDescripcionPlanEstudio>> list() {
             List<IDescripcionPlanEstudio> descripcionesPlanEstudio = service.getDescripcionesPlanEstudio();
             return new ResponseEntity<List<IDescripcionPlanEstudio>>(descripcionesPlanEstudio, HttpStatus.OK);
+        }
+
+        @PostMapping("/")
+        public void add(@RequestBody DescripcionPlanEstudio descripcionPlanEstudio) {
+            try {
+                service.save(descripcionPlanEstudio);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

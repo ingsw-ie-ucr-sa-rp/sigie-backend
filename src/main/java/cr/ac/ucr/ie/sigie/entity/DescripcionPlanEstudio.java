@@ -11,15 +11,6 @@ public class DescripcionPlanEstudio {
     @Column(name = "ordenDescripcionPlanEstudio", unique = false, nullable = false)
     private int ordenDescripcionPlanEstudio;
 
-    @Column(name = "codigo", unique = false, length = 512, nullable = false)
-    private String codigo;
-
-    @Column(name = "duracion", unique = false, length = 512, nullable = false)
-    private String duracion;
-
-    @Column(name = "ciclos", unique = false, length = 512, nullable = false)
-    private String ciclos;
-
     @Column(name = "detalleDescripcionPlanEstudio", unique = false, length = 512, nullable = false)
     private String detalleDescripcionPlanEstudio;
 
@@ -44,30 +35,6 @@ public class DescripcionPlanEstudio {
 
     public void setOrdenDescripcionPlanEstudio(int ordenDescripcionPlanEstudio) {
         this.ordenDescripcionPlanEstudio = ordenDescripcionPlanEstudio;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(String duracion) {
-        this.duracion = duracion;
-    }
-
-    public String getCiclos() {
-        return ciclos;
-    }
-
-    public void setCiclos(String ciclos) {
-        this.ciclos = ciclos;
     }
 
     public String getDetalleDescripcionPlanEstudio() {
