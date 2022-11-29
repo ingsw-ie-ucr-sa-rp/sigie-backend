@@ -22,6 +22,10 @@ public class PlanEstudio {
     private String nombreCarrera;
     @Column(name = "imagenesRelacionadas", unique = false, nullable = false)
     private byte imagenesRelacionadas;
+
+    @Column(columnDefinition = "boolean default false")
+    private boolean activo;
+
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
     @JsonIgnoreProperties("planEstudio")
@@ -48,6 +52,11 @@ public class PlanEstudio {
     @JsonIgnoreProperties("planEstudio")
     private List<DescripcionPlanEstudio> descripcionesPlanEstudio;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idAreaDisciplinaria")
+    @JsonIgnoreProperties("planesEstudio")
+    private AreaDisciplinaria areaDisciplinaria;
+
     public PlanEstudio() {
         setCursos(new ArrayList<>());
         setEnfasis(new ArrayList<>());
@@ -56,6 +65,7 @@ public class PlanEstudio {
         setItemesPerfilSalida(new ArrayList<>());
         setGrado(new Grado());
         setDescripcionesPlanEstudio(new ArrayList<>());
+        setAreaDisciplinaria(new AreaDisciplinaria());
     }
 
     public int getIdPlanEstudio() {
@@ -168,5 +178,21 @@ public class PlanEstudio {
 
     public void setDescripcionesPlanEstudio(List<DescripcionPlanEstudio> descripcionesPlanEstudio) {
         this.descripcionesPlanEstudio = descripcionesPlanEstudio;
+    }
+
+    public AreaDisciplinaria getAreaDisciplinaria() {
+        return areaDisciplinaria;
+    }
+
+    public void setAreaDisciplinaria(AreaDisciplinaria areaDisciplinaria) {
+        this.areaDisciplinaria = areaDisciplinaria;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 }

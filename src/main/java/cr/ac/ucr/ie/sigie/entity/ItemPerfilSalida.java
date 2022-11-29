@@ -12,6 +12,9 @@ public class ItemPerfilSalida {
     @Column(name = "descripcion", unique = false, length = 512, nullable = false)
     private String descripcion;
 
+    @Column(name = "orden", unique = false, length = 512, nullable = false)
+    private int orden;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPlanEstudio")
     private PlanEstudio planEstudio;
@@ -56,4 +59,8 @@ public class ItemPerfilSalida {
     public void setTipoPerfilSalida(TipoItemPerfilSalida tipoPerfilSalida) {
         this.tipoItemPerfilSalida = tipoPerfilSalida;
     }
+
+    public int getOrden() { return orden; }
+
+    public void setOrden(int orden) { this.orden = orden; }
 }
