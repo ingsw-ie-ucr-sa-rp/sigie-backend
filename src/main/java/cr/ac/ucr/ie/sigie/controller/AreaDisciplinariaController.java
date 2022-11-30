@@ -1,7 +1,6 @@
 package cr.ac.ucr.ie.sigie.controller;
 
 import cr.ac.ucr.ie.sigie.entity.AreaDisciplinaria;
-import cr.ac.ucr.ie.sigie.entity.PlanEstudio;
 import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IAreaDisciplinaria;
 import cr.ac.ucr.ie.sigie.service.AreaDisciplinariaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(path = "/api/areadisciplinaria")
 public class AreaDisciplinariaController {
@@ -25,7 +24,12 @@ public class AreaDisciplinariaController {
         return new ResponseEntity<List<IAreaDisciplinaria>>(areasDisciplinarias, HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @GetMapping("/{id}")
+    public AreaDisciplinaria get(@PathVariable int id) {
+        return service.get(id);
+    }
+
+    @PostMapping("/add")
     public void add(@RequestBody AreaDisciplinaria areaDisciplinaria) {
         try {
             service.save(areaDisciplinaria);

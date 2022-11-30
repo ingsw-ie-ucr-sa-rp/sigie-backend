@@ -1,6 +1,7 @@
 package cr.ac.ucr.ie.sigie.controller;
 
 import cr.ac.ucr.ie.sigie.entity.Curso;
+import cr.ac.ucr.ie.sigie.entity.DescripcionPlanEstudio;
 import cr.ac.ucr.ie.sigie.entity.UnidadAcademica;
 import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IUnidadAcademica;
 import cr.ac.ucr.ie.sigie.service.UnidadAcademicaService;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(path = "/api/unidadacademica")
 public class UnidadAcademicaController {
@@ -25,7 +26,12 @@ public class UnidadAcademicaController {
         return new ResponseEntity<List<IUnidadAcademica>>(unidadesAcademicas, HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @GetMapping("/{id}")
+    public UnidadAcademica get(@PathVariable int id) {
+        return service.get(id);
+    }
+
+    @PostMapping("/add")
     public void add(@RequestBody UnidadAcademica unidadAcademica) {
         try {
             service.save(unidadAcademica);

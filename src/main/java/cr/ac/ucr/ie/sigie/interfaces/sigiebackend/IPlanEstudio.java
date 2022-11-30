@@ -8,4 +8,6 @@ public interface IPlanEstudio {
     int getDuracionAnos();
 
     String getNombreCarrera();
+    String getModalidad();
+    String getPeriodicidad();
 }

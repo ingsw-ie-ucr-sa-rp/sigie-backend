@@ -1,6 +1,7 @@
 package cr.ac.ucr.ie.sigie.controller;
 
 import cr.ac.ucr.ie.sigie.entity.AreaDisciplinaria;
+import cr.ac.ucr.ie.sigie.entity.DescripcionPlanEstudio;
 import cr.ac.ucr.ie.sigie.entity.Enfasis;
 import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IEnfasis;
 import cr.ac.ucr.ie.sigie.service.EnfasisService;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(path = "/api/enfasis")
 public class EnfasisController {
@@ -24,7 +25,12 @@ public class EnfasisController {
         return new ResponseEntity<List<IEnfasis>>(enfasis, HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @GetMapping("/{id}")
+    public Enfasis get(@PathVariable int id) {
+        return service.get(id);
+    }
+
+    @PostMapping("/add")
     public void add(@RequestBody Enfasis enfasis) {
         try {
             service.save(enfasis);

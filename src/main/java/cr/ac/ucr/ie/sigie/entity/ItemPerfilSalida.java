@@ -15,17 +15,17 @@ public class ItemPerfilSalida {
     @Column(name = "orden", unique = false, length = 512, nullable = false)
     private int orden;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPlanEstudio")
     private PlanEstudio planEstudio;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idTipo")
     private TipoItemPerfilSalida tipoItemPerfilSalida;
 
     public ItemPerfilSalida() {
-        planEstudio = new PlanEstudio();
-        tipoItemPerfilSalida = new TipoItemPerfilSalida();
+       // planEstudio = new PlanEstudio();
+        //tipoItemPerfilSalida = new TipoItemPerfilSalida();
     }
 
     public int getIdTipoPerfilSalida() {

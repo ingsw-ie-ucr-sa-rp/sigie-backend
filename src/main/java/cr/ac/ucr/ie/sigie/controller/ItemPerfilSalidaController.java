@@ -1,5 +1,6 @@
 package cr.ac.ucr.ie.sigie.controller;
 
+import cr.ac.ucr.ie.sigie.entity.DescripcionPlanEstudio;
 import cr.ac.ucr.ie.sigie.entity.ItemPerfilSalida;
 import cr.ac.ucr.ie.sigie.entity.TipoItemPerfilEntrada;
 import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IItemDescripcion;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(path = "/api/itemperfilsalida")
 
@@ -27,7 +28,12 @@ public class ItemPerfilSalidaController {
         return service.listAll();
     }
 
-    @PostMapping("/")
+    @GetMapping("/{id}")
+    public ItemPerfilSalida get(@PathVariable int id) {
+        return service.get(id);
+    }
+
+    @PostMapping("/add")
     public void add(@RequestBody ItemPerfilSalida itemPerfilSalida) {
         try {
             service.save(itemPerfilSalida);

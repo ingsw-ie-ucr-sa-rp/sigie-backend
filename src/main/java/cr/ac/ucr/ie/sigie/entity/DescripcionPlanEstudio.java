@@ -14,12 +14,14 @@ public class DescripcionPlanEstudio {
     @Column(name = "detalleDescripcionPlanEstudio", unique = false, length = 512, nullable = false)
     private String detalleDescripcionPlanEstudio;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idPlanEstudio")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPlanEstudio", nullable = true)
     @JsonIgnoreProperties("descripcionesPlanEstudio")
     private PlanEstudio planEstudio;
 
-    public DescripcionPlanEstudio(){planEstudio = new PlanEstudio();}
+    public DescripcionPlanEstudio(){
+        //planEstudio = new PlanEstudio();
+    }
 
     public int getIdDescripcionPlanEstudio() {
         return idDescripcionPlanEstudio;

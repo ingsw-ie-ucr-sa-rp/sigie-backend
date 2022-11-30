@@ -10,17 +10,21 @@ public class PlanEstudio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPlanEstudio;
-    @Column(name = "anoAprobacion", unique = false, nullable = false)
+    @Column(name = "anoAprobacion", unique = false, nullable = true)
     private int anoAprobacion;
-    @Column(name = "cantidadCiclos", unique = false, nullable = false)
+    @Column(name = "cantidadCiclos", unique = false, nullable = true)
     private int cantidadCiclos;
-    @Column(name = "codigoCarrera", unique = false, nullable = false)
+    @Column(name = "codigoCarrera", unique = false, nullable = true)
     private int codigoCarrera;
-    @Column(name = "duracionAnos", unique = false, nullable = false)
+    @Column(name = "duracionAnos", unique = false, nullable = true)
     private int duracionAnos;
-    @Column(name = "nombreCarrera", unique = false, length = 256, nullable = false)
+    @Column(name = "nombreCarrera", unique = false, length = 256, nullable = true)
     private String nombreCarrera;
-    @Column(name = "imagenesRelacionadas", unique = false, nullable = false)
+    @Column(name = "modalidad", unique = false, length = 256, nullable = true)
+    private String modalidad;
+    @Column(name = "periodicidad", unique = false, length = 256, nullable = true)
+    private String periodicidad;
+    @Column(name = "imagenesRelacionadas", unique = false, nullable = true)
     private byte imagenesRelacionadas;
 
     @Column(columnDefinition = "boolean default false")
@@ -42,8 +46,8 @@ public class PlanEstudio {
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "planEstudio", orphanRemoval = true)
     private List<ItemPerfilSalida> itemesPerfilSalida;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idGrado")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idGrado", nullable = true)
     @JsonIgnoreProperties("planesEstudio")
     private Grado grado;
 
@@ -52,8 +56,8 @@ public class PlanEstudio {
     @JsonIgnoreProperties("planEstudio")
     private List<DescripcionPlanEstudio> descripcionesPlanEstudio;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idAreaDisciplinaria")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idAreaDisciplinaria", nullable = true)
     @JsonIgnoreProperties("planesEstudio")
     private AreaDisciplinaria areaDisciplinaria;
 
@@ -63,9 +67,9 @@ public class PlanEstudio {
         setUnidadesAcademicasPropietarias(new ArrayList<>());
         setItemesPerfilEntrada(new ArrayList<>());
         setItemesPerfilSalida(new ArrayList<>());
-        setGrado(new Grado());
+        //setGrado(new Grado());
         setDescripcionesPlanEstudio(new ArrayList<>());
-        setAreaDisciplinaria(new AreaDisciplinaria());
+        //setAreaDisciplinaria(new AreaDisciplinaria());
     }
 
     public int getIdPlanEstudio() {
@@ -114,6 +118,22 @@ public class PlanEstudio {
 
     public void setNombreCarrera(String nombreCarrera) {
         this.nombreCarrera = nombreCarrera;
+    }
+
+    public String getModalidad() {
+        return modalidad;
+    }
+
+    public void setModalidad(String modalidad) {
+        this.modalidad = modalidad;
+    }
+
+    public String getPeriodicidad() {
+        return periodicidad;
+    }
+
+    public void setPeriodicidad(String periodicidad) {
+        this.periodicidad = periodicidad;
     }
 
     public byte getImagenesRelacionadas() {

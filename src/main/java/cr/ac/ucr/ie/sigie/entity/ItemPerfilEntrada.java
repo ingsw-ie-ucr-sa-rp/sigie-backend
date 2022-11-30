@@ -15,17 +15,17 @@ public class ItemPerfilEntrada {
     private int orden;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPlanEstudio")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPlanEstudio", nullable = true)
     private PlanEstudio planEstudio;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTipo")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idTipo", nullable = true)
     private TipoItemPerfilEntrada tipoItemPerfilEntrada;
 
     public ItemPerfilEntrada() {
-        planEstudio = new PlanEstudio();
-        tipoItemPerfilEntrada = new TipoItemPerfilEntrada();
+        //planEstudio = new PlanEstudio();
+        //tipoItemPerfilEntrada = new TipoItemPerfilEntrada();
     }
 
     public int getIdTipoPerfilEntrada() {

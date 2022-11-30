@@ -17,14 +17,14 @@ public class Enfasis {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> cursos;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idPlanEstudio")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPlanEstudio", nullable = true)
     @JsonIgnoreProperties("enfasis")
     private PlanEstudio planEstudio;
 
     public Enfasis() {
         cursos = new ArrayList<>();
-        planEstudio = new PlanEstudio();
+        //planEstudio = new PlanEstudio();
     }
 
     public int getIdEnfasis() {
