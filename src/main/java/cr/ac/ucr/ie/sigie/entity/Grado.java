@@ -11,7 +11,7 @@ public class Grado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idGrado;
 
-    @Column(name = "nombre", unique = false, length = 50, nullable = true)
+    @Column(name = "nombre", unique = false, length = 50, nullable = false)
     private String nombre;
 
     @Column(name = "totalCreditosMaximo", unique = false, nullable = false)

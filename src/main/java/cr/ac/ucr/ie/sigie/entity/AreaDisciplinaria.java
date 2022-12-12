@@ -10,7 +10,7 @@ public class AreaDisciplinaria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAreaDisciplinaria;
 
-    @Column(name = "nombre", unique = false, length = 256, nullable = true)
+    @Column(name = "nombre", unique = false, length = 256, nullable = false)
     private String nombre;
 
     @OneToMany(cascade = CascadeType.ALL,

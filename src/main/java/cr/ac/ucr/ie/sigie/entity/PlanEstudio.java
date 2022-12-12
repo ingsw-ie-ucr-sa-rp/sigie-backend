@@ -10,21 +10,21 @@ public class PlanEstudio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPlanEstudio;
-    @Column(name = "anoAprobacion", unique = false, nullable = true)
+    @Column(name = "anoAprobacion", unique = false, nullable = false)
     private int anoAprobacion;
-    @Column(name = "cantidadCiclos", unique = false, nullable = true)
+    @Column(name = "cantidadCiclos", unique = false, nullable = false)
     private int cantidadCiclos;
-    @Column(name = "codigoCarrera", unique = false, nullable = true)
+    @Column(name = "codigoCarrera", unique = false, nullable = false)
     private int codigoCarrera;
-    @Column(name = "duracionAnos", unique = false, nullable = true)
+    @Column(name = "duracionAnos", unique = false, nullable = false)
     private int duracionAnos;
-    @Column(name = "nombreCarrera", unique = false, length = 256, nullable = true)
+    @Column(name = "nombreCarrera", unique = false, length = 256, nullable = false)
     private String nombreCarrera;
-    @Column(name = "modalidad", unique = false, length = 256, nullable = true)
+    @Column(name = "modalidad", unique = false, length = 256, nullable = false)
     private String modalidad;
-    @Column(name = "periodicidad", unique = false, length = 256, nullable = true)
+    @Column(name = "periodicidad", unique = false, length = 256, nullable = false)
     private String periodicidad;
-    @Column(name = "imagenesRelacionadas", unique = false, nullable = true)
+    @Column(name = "imagenesRelacionadas", unique = false, nullable = false)
     private byte imagenesRelacionadas;
 
     @Column(columnDefinition = "boolean default false")
