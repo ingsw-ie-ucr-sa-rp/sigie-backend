@@ -1,5 +1,7 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -16,6 +18,11 @@ public class AreaDisciplinaria {
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "areaDisciplinaria", orphanRemoval = true)
     private List<Curso> cursos;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPlanEstudio", nullable = true)
+    @JsonIgnoreProperties("enfasis")
+    private PlanEstudio planEstudio;
 
     public AreaDisciplinaria() {
         cursos = new ArrayList<>();
@@ -43,5 +50,13 @@ public class AreaDisciplinaria {
 
     public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
+    }
+
+    public PlanEstudio getPlanEstudio() {
+        return planEstudio;
+    }
+
+    public void setPlanEstudio(PlanEstudio planEstudio) {
+        this.planEstudio = planEstudio;
     }
 }

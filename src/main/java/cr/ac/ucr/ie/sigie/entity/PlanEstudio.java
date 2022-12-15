@@ -62,13 +62,13 @@ public class PlanEstudio {
     private AreaDisciplinaria areaDisciplinaria;
 
     public PlanEstudio() {
-        setCursos(new ArrayList<>());
-        setEnfasis(new ArrayList<>());
-        setUnidadesAcademicasPropietarias(new ArrayList<>());
-        setItemesPerfilEntrada(new ArrayList<>());
-        setItemesPerfilSalida(new ArrayList<>());
+        //setCursos(new ArrayList<>());
+        //setEnfasis(new ArrayList<>());
+        //setUnidadesAcademicasPropietarias(new ArrayList<>());
+        //setItemesPerfilEntrada(new ArrayList<>());
+        //setItemesPerfilSalida(new ArrayList<>());
         //setGrado(new Grado());
-        setDescripcionesPlanEstudio(new ArrayList<>());
+        //setDescripcionesPlanEstudio(new ArrayList<>());
         //setAreaDisciplinaria(new AreaDisciplinaria());
     }
 
