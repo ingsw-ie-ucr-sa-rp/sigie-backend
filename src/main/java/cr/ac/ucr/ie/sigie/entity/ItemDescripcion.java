@@ -18,7 +18,7 @@ public class ItemDescripcion {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idCurso")
-    @JsonIgnoreProperties("itemesDescripcion")
+    @JsonIgnoreProperties(value = {"itemesDescripcion"}, allowSetters = true)
     private Curso curso;
 
     public ItemDescripcion() {

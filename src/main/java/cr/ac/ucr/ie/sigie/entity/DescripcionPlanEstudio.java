@@ -16,7 +16,7 @@ public class DescripcionPlanEstudio {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPlanEstudio", nullable = true)
-    @JsonIgnoreProperties("descripcionesPlanEstudio")
+    @JsonIgnoreProperties(value = {"descripcionesPlanEstudio"}, allowSetters = true)
     private PlanEstudio planEstudio;
 
     public DescripcionPlanEstudio(){

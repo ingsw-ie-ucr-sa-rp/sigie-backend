@@ -1,5 +1,7 @@
 package cr.ac.ucr.ie.sigie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class ItemPerfilEntrada {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPlanEstudio", nullable = true)
+    @JsonIgnoreProperties(value = {"itemPerfilEntrada"}, allowSetters = true)
     private PlanEstudio planEstudio;
 
     @ManyToOne(cascade = CascadeType.ALL)

@@ -13,12 +13,12 @@ public class UnidadAcademica {
     private String nombreUnidadAcademica;
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Curso> cursosPropios;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<PlanEstudio> planesEstudio;
 
     public UnidadAcademica() {
         cursosPropios = new ArrayList<>();
-        planesEstudio = new ArrayList<>();
+        //planesEstudio = new ArrayList<>();
     }
 
     public int getIdUnidadAcademica() {

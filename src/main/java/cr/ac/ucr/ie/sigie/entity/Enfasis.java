@@ -19,7 +19,7 @@ public class Enfasis {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPlanEstudio", nullable = true)
-    @JsonIgnoreProperties("enfasis")
+    @JsonIgnoreProperties(value = {"enfasis"}, allowSetters = true)
     private PlanEstudio planEstudio;
 
     public Enfasis() {

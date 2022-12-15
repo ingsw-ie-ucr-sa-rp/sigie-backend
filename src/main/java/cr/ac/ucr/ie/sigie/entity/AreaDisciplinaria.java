@@ -1,6 +1,7 @@
 package cr.ac.ucr.ie.sigie.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +22,12 @@ public class AreaDisciplinaria {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPlanEstudio", nullable = true)
-    @JsonIgnoreProperties("enfasis")
+    @JsonIgnoreProperties(value = {"areaDisciplinaria"}, allowSetters = true)
     private PlanEstudio planEstudio;
 
     public AreaDisciplinaria() {
         cursos = new ArrayList<>();
+        //planEstudio = new PlanEstudio();
     }
 
     public int getIdAreaDisciplinaria() {
