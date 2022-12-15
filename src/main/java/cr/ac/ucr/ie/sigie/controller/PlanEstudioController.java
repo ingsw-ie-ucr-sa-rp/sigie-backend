@@ -1,8 +1,6 @@
 package cr.ac.ucr.ie.sigie.controller;
 
-import cr.ac.ucr.ie.sigie.entity.DescripcionPlanEstudio;
 import cr.ac.ucr.ie.sigie.entity.PlanEstudio;
-import cr.ac.ucr.ie.sigie.entity.UnidadAcademica;
 import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IPlanEstudio;
 import cr.ac.ucr.ie.sigie.service.PlanEstudioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,10 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/planestudio")
 public class PlanEstudioController {
+
+    public void setService(PlanEstudioService service) {
+        this.service = service;
+    }
 
     @Autowired
     private PlanEstudioService service;

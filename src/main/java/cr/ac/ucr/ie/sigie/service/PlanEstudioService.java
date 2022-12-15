@@ -1,6 +1,7 @@
 package cr.ac.ucr.ie.sigie.service;
 
 import cr.ac.ucr.ie.sigie.interfaces.sigiebackend.IPlanEstudio;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,6 +9,7 @@ import cr.ac.ucr.ie.sigie.entity.PlanEstudio;
 import cr.ac.ucr.ie.sigie.repository.PlanEstudioRepository;
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 @Transactional
 public class PlanEstudioService {
