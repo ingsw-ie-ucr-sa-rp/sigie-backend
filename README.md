@@ -1,7 +1,7 @@
 # API del Sistema de Gestión de la carrera de Informática Empresarial | SIGIE
 
 
-Con este API, las aplicaciones clientes pueden obtener información detallada acerca de los planes de estudio de la carrera de Informática Empresarial. Esto permite a los usuarios acceder a información precisa y actualizada sobre los cursos y asignaturas de la carrera, lo que puede ser útil para tomar decisiones informadas acerca de su educación y planificar su progreso académico.
+Con este API, las aplicaciones clientes pueden **obtener información detallada acerca de los planes de estudio de la carrera de Informática Empresarial.** Esto permite a los usuarios acceder a información precisa y actualizada sobre los cursos y asignaturas de la carrera, lo que puede ser útil para tomar decisiones informadas acerca de su educación y planificar su progreso académico.
 
 Estas son algunas de las caracteríscas del API:
 
@@ -14,9 +14,9 @@ Estas son algunas de las caracteríscas del API:
 
 Para ejecutar este API, se requiere lo siguiente:
 
-1. Java 11 o posterior instalado en el sistema.
-2. Un IDE compatible con Spring Boot, como Eclipse o IntelliJ IDEA.
-3. Una base de datos MySQL.
+1. **Java 11** o posterior instalado en el sistema.
+2. Un **IDE compatible con Spring Boot**, como Eclipse o IntelliJ IDEA.
+3. Una base de datos **MySQL**.
 
 ## Instrucciones de uso
 
