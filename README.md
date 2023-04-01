@@ -17,6 +17,8 @@ Para ejecutar este API, se requiere lo siguiente:
 1. **Java 11** o posterior instalado en el sistema.
 2. Un **IDE compatible con Spring Boot**, como Eclipse o IntelliJ IDEA.
 3. Una base de datos **MySQL**.
+4. Debes tener docker instalado en tu máquina local (Opcional).
+   - [Instrucciones de uso con Docker](#docker)
 
 ## Instrucciones de uso
 
@@ -28,10 +30,9 @@ Para usar este API, siga estos pasos:
 4. Inicie el API ejecutando la clase [SigieBackendApplication](src\main\java\cr\ac\ucr\ie\sigie\SigieBackendApplication.java).
 5. Explore los endpoints disponibles en el API y utilice una herramienta como Postman o cURL para interactuar con ellos.
 
+## Instrucciones de uso con Docker {#docker}
 
-## Instrucciones de uso con Docker
-
-Para usar este API con docker, siga estos pasos:
+Debes tener docker instalado en tu máquina local. Para usar este API con contenedores de docker, siga estos pasos:
 
 ### Crear y ejecutar contenedor de docker
 
@@ -54,6 +55,7 @@ $ docker-compose up
 ```
 
 Vuelve a compilar el proyecto con docker-compose:
+
 ```bash
 $ docker-compose up --build
 ```
