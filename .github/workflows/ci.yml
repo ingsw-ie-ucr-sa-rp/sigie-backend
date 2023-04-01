@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: mydb
+          MYSQL_USER: db_user
+          MYSQL_PASSWORD: db_password
+          MYSQL_ROOT_PASSWORD: db_root_password
+        ports:
+          - 3306:3306
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Running Docker build
+        env:
+          DATABASE_URL: jdbc:mysql://db:3306/mydb?createDatabaseIfNotExist=true
+          DATABASE_USERNAME: db_user
+          DATABASE_PASSWORD: db_password
+          DDL_AUTO: create
+          SHOW_SQL: "true"
+          SQL_PLATFORM: mysql
+          CHAR_SET: UTF-8
+          PORT: 8080
+          DOCKER_BUILDKIT: 1
+        run: docker build .
