@@ -28,6 +28,36 @@ Para usar este API, siga estos pasos:
 4. Inicie el API ejecutando la clase [SigieBackendApplication](src\main\java\cr\ac\ucr\ie\sigie\SigieBackendApplication.java).
 5. Explore los endpoints disponibles en el API y utilice una herramienta como Postman o cURL para interactuar con ellos.
 
+
+## Instrucciones de uso con Docker
+
+Para usar este API con docker, siga estos pasos:
+
+### Crear y ejecutar contenedor de docker
+
+```bash
+$ docker build -t sigie-backend .
+```
+
+```bash
+$ docker run -p 8080:8080 -e DATABASE_URL=jdbc:mysql://host:3306/database_name?createDatabaseIfNotExist=TRUE -e DATABASE_USERNAME=your_user -e DATABASE_PASSWORD=your_password sigie-backend
+```
+
+Nota: Si necesitas crear la base de datos, debes agregar la variable de entorno `DDL_AUTO=create`.
+
+### Docker compose
+
+Ejecuta la el servidor base de datos y el api como contenedores de docker utilizando docker-compose:
+
+```bash
+$ docker-compose up
+```
+
+Vuelve a compilar el proyecto con docker-compose:
+```bash
+$ docker-compose up --build
+```
+
 ## Variables de entorno {#variables_entorno}
 
 - [¿Cómo configurar variables de entorno en IntelliJ?](https://www.jetbrains.com/help/objc/add-environment-variables-and-program-arguments.html)
