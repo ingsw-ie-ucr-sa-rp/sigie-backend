@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install maven -y
 
 # Build application
 RUN mvn package -DskipTests
+RUN echo $(ls -l target/)
 COPY target/${ARTIFACT_ID}-${APP_VERSION}.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose the port
