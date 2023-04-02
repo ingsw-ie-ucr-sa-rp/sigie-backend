@@ -30,6 +30,8 @@ Para usar este API, siga estos pasos:
 4. Inicie el API ejecutando la clase [SigieBackendApplication](src\main\java\cr\ac\ucr\ie\sigie\SigieBackendApplication.java).
 5. Explore los endpoints disponibles en el API y utilice una herramienta como Postman o cURL para interactuar con ellos.
 
+Puedes consultar la documentación e interacturar con el API mediante swagger. Utiliza el siguiente endpoint: http://localhost:8080/swagger-ui/index.html
+
 ## Instrucciones de uso con Docker {#docker}
 
 Debes tener docker instalado en tu máquina local. Para usar este API con contenedores de docker, siga estos pasos:
