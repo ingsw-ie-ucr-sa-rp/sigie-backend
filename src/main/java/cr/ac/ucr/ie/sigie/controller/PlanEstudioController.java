@@ -27,7 +27,7 @@ public class PlanEstudioController {
     @Operation(description = "Obtener lista de planes de estudio.")
     public ResponseEntity<List<IPlanEstudio>> list() {
         List<IPlanEstudio> planesEstudio = service.getPlanesEstudio();
-        return new ResponseEntity<List<IPlanEstudio>>(planesEstudio, HttpStatus.OK);
+        return new ResponseEntity<>(planesEstudio, HttpStatus.OK);
     }
 
 }

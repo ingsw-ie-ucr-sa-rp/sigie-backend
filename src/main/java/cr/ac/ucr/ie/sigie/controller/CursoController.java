@@ -29,7 +29,7 @@ public class CursoController {
     @Operation(description = "Obtener lista de cursos.")
     public ResponseEntity<List<ICurso>> list() {
         List<ICurso> cursos = service.getCursos();
-        return new ResponseEntity<List<ICurso>>(cursos, HttpStatus.OK);
+        return new ResponseEntity<>(cursos, HttpStatus.OK);
     }
 
     @PostMapping("/")

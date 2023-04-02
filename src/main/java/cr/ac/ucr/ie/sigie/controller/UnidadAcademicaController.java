@@ -26,7 +26,7 @@ public class UnidadAcademicaController {
     @Operation(description = "Obtener lista de unidades académicas.")
     public ResponseEntity<List<IUnidadAcademica>> list() {
         List<IUnidadAcademica> unidadesAcademicas = service.getUnidadesAcademicas();
-        return new ResponseEntity<List<IUnidadAcademica>>(unidadesAcademicas, HttpStatus.OK);
+        return new ResponseEntity<>(unidadesAcademicas, HttpStatus.OK);
     }
 
 }

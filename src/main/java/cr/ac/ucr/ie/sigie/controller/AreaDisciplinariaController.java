@@ -27,7 +27,6 @@ public class AreaDisciplinariaController {
     @Operation(description = "Obtener lista de áreas disciplinarias.")
     public ResponseEntity<List<IAreaDisciplinaria>> list() {
         List<IAreaDisciplinaria> areasDisciplinarias = service.getAreasDisciplinarias();
-        return new ResponseEntity<List<IAreaDisciplinaria>>(areasDisciplinarias, HttpStatus.OK);
+        return new ResponseEntity<>(areasDisciplinarias, HttpStatus.OK);
     }
-
 }

@@ -27,7 +27,7 @@ public class ModalidadController {
     @Operation(description = "Obtener lista de modalidades.")
     public ResponseEntity<List<IModalidad>> list() {
         List<IModalidad> modalidades = service.getModalidades();
-        return new ResponseEntity<List<IModalidad>>(modalidades, HttpStatus.OK);
+        return new ResponseEntity<>(modalidades, HttpStatus.OK);
     }
 
 }
